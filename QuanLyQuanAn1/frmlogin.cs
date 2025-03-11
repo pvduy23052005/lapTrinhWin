@@ -68,10 +68,12 @@ namespace QuanLyQuanAn1
         }
         private void btndangnhap_Click(object sender, EventArgs e)
         {
-                string user = txttendangnhap.Text;
-                string pass = txtpassword.Text;
 
-            if (loginn(user , pass))
+
+            string user = txttendangnhap.Text;
+            string pass = txtpassword.Text;
+
+            if (loginn(user, pass))
             {
                 frmtable frmtable = new frmtable();
                 this.Hide();
@@ -81,10 +83,16 @@ namespace QuanLyQuanAn1
             else
             {
                 MessageBox.Show("tài khoản hoặc mật khẩu không hợp lệ");
-                
+
             }
-           
-        
+
+            //frmtable frmtable = new frmtable();
+            //this.Hide();
+            //frmtable.ShowDialog();
+            //this.Show();
+
+
+
         }
 
         private void frmlogin_Load(object sender, EventArgs e)
