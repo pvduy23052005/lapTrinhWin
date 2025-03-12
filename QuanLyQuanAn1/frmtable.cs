@@ -143,5 +143,10 @@ namespace QuanLyQuanAn1
         {
 
         }
+
+        private void lblloai_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

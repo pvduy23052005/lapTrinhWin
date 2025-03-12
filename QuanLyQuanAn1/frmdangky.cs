@@ -99,5 +99,20 @@ namespace QuanLyQuanAn1
         {
 
         }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtloai_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txthienthi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

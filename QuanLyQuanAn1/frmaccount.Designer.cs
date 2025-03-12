@@ -58,12 +58,13 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.lbltendangnhap);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 70);
+            this.panel1.Location = new System.Drawing.Point(3, 69);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(490, 74);
+            this.panel1.Size = new System.Drawing.Size(490, 73);
             this.panel1.TabIndex = 0;
             // 
             // textBox1
@@ -71,27 +72,29 @@
             this.textBox1.Location = new System.Drawing.Point(161, 26);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(237, 25);
+            this.textBox1.Size = new System.Drawing.Size(237, 21);
             this.textBox1.TabIndex = 1;
             // 
             // lbltendangnhap
             // 
             this.lbltendangnhap.AutoSize = true;
-            this.lbltendangnhap.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltendangnhap.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltendangnhap.ForeColor = System.Drawing.Color.White;
             this.lbltendangnhap.Location = new System.Drawing.Point(29, 27);
             this.lbltendangnhap.Name = "lbltendangnhap";
-            this.lbltendangnhap.Size = new System.Drawing.Size(141, 25);
+            this.lbltendangnhap.Size = new System.Drawing.Size(116, 20);
             this.lbltendangnhap.TabIndex = 0;
             this.lbltendangnhap.Text = "Tên đăng nhập:";
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.lbltenhienthi);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 150);
+            this.panel2.Location = new System.Drawing.Point(3, 148);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(490, 78);
+            this.panel2.Size = new System.Drawing.Size(490, 77);
             this.panel2.TabIndex = 1;
             // 
             // textBox2
@@ -99,26 +102,28 @@
             this.textBox2.Location = new System.Drawing.Point(161, 33);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(237, 25);
+            this.textBox2.Size = new System.Drawing.Size(237, 21);
             this.textBox2.TabIndex = 1;
             // 
             // lbltenhienthi
             // 
             this.lbltenhienthi.AutoSize = true;
-            this.lbltenhienthi.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltenhienthi.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltenhienthi.ForeColor = System.Drawing.Color.White;
             this.lbltenhienthi.Location = new System.Drawing.Point(29, 34);
             this.lbltenhienthi.Name = "lbltenhienthi";
-            this.lbltenhienthi.Size = new System.Drawing.Size(114, 25);
+            this.lbltenhienthi.Size = new System.Drawing.Size(95, 20);
             this.lbltenhienthi.TabIndex = 0;
             this.lbltenhienthi.Text = "Tên hiển thị:";
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel3.Controls.Add(this.textBox3);
             this.panel3.Controls.Add(this.lblpassword);
-            this.panel3.Location = new System.Drawing.Point(3, 234);
+            this.panel3.Location = new System.Drawing.Point(3, 231);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(490, 72);
+            this.panel3.Size = new System.Drawing.Size(490, 77);
             this.panel3.TabIndex = 2;
             // 
             // textBox3
@@ -126,24 +131,27 @@
             this.textBox3.Location = new System.Drawing.Point(161, 27);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(237, 25);
+            this.textBox3.Size = new System.Drawing.Size(237, 21);
             this.textBox3.TabIndex = 1;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // lblpassword
             // 
             this.lblpassword.AutoSize = true;
-            this.lblpassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpassword.Location = new System.Drawing.Point(38, 28);
+            this.lblpassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblpassword.ForeColor = System.Drawing.Color.White;
+            this.lblpassword.Location = new System.Drawing.Point(29, 24);
             this.lblpassword.Name = "lblpassword";
-            this.lblpassword.Size = new System.Drawing.Size(103, 25);
+            this.lblpassword.Size = new System.Drawing.Size(87, 20);
             this.lblpassword.TabIndex = 0;
             this.lblpassword.Text = "Pass Word:";
             // 
             // btnthoat
             // 
-            this.btnthoat.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnthoat.BackColor = System.Drawing.Color.DimGray;
+            this.btnthoat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnthoat.ForeColor = System.Drawing.Color.Black;
-            this.btnthoat.Location = new System.Drawing.Point(314, 25);
+            this.btnthoat.Location = new System.Drawing.Point(379, 40);
             this.btnthoat.Name = "btnthoat";
             this.btnthoat.Size = new System.Drawing.Size(84, 39);
             this.btnthoat.TabIndex = 3;
@@ -194,8 +202,8 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.5814F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.60465F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.53488F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.13953F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.67442F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.53488F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.44186F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(496, 430);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
@@ -205,16 +213,16 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(3, 3);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(490, 61);
+            this.panel7.Size = new System.Drawing.Size(490, 60);
             this.panel7.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(132, 3);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(105, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(301, 50);
+            this.label1.Size = new System.Drawing.Size(251, 40);
             this.label1.TabIndex = 0;
             this.label1.Text = "Thông tin chi tiết";
             // 
@@ -222,9 +230,9 @@
             // 
             this.panel8.Controls.Add(this.btnthoat);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 312);
+            this.panel8.Location = new System.Drawing.Point(3, 314);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(490, 115);
+            this.panel8.Size = new System.Drawing.Size(490, 113);
             this.panel8.TabIndex = 3;
             // 
             // panel5
@@ -247,7 +255,7 @@
             // 
             // frmaccount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 436);
             this.Controls.Add(this.tableLayoutPanel1);
