@@ -78,7 +78,7 @@
             // 
             this.lbltendangnhap.AutoSize = true;
             this.lbltendangnhap.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltendangnhap.Location = new System.Drawing.Point(29, 27);
+            this.lbltendangnhap.Location = new System.Drawing.Point(14, 26);
             this.lbltendangnhap.Name = "lbltendangnhap";
             this.lbltendangnhap.Size = new System.Drawing.Size(141, 25);
             this.lbltendangnhap.TabIndex = 0;
@@ -106,7 +106,7 @@
             // 
             this.lbltenhienthi.AutoSize = true;
             this.lbltenhienthi.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltenhienthi.Location = new System.Drawing.Point(29, 34);
+            this.lbltenhienthi.Location = new System.Drawing.Point(14, 33);
             this.lbltenhienthi.Name = "lbltenhienthi";
             this.lbltenhienthi.Size = new System.Drawing.Size(114, 25);
             this.lbltenhienthi.TabIndex = 0;
@@ -133,7 +133,7 @@
             // 
             this.lblpassword.AutoSize = true;
             this.lblpassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpassword.Location = new System.Drawing.Point(38, 28);
+            this.lblpassword.Location = new System.Drawing.Point(14, 27);
             this.lblpassword.Name = "lblpassword";
             this.lblpassword.Size = new System.Drawing.Size(103, 25);
             this.lblpassword.TabIndex = 0;

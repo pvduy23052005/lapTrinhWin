@@ -45,7 +45,7 @@ namespace QuanLyQuanAn1
             if(kt.Rows.Count > 0)
             {
                 userType = type(username, password);
-                Console.WriteLine(userType);
+                
                 return true;
             }
             return false;

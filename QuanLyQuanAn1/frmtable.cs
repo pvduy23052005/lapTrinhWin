@@ -64,7 +64,8 @@ namespace QuanLyQuanAn1
             {
                 MessageBox.Show("Bạn không có quyền truy cập!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
+
         }
 
         private void doanhMụcToolStripMenuItem_Click(object sender, EventArgs e)
@@ -142,6 +143,11 @@ namespace QuanLyQuanAn1
         private void frmtable_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void hiihhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

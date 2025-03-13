@@ -16,7 +16,7 @@ namespace QuanLyQuanAn1
 
             try
             {
-                SqlConnection con = new SqlConnection("Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLyQuanAn;Integrated Security=True");
+                SqlConnection con = new SqlConnection("Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLy;Integrated Security=True");
                 con.Open();
                 DataTable dt = new DataTable();
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
@@ -35,7 +35,7 @@ namespace QuanLyQuanAn1
         {
             try
             {
-                SqlConnection con = new SqlConnection("Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLyQuanAn;Integrated Security=True");
+                SqlConnection con = new SqlConnection("Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLy;Integrated Security=True");
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
                 int row = cmd.ExecuteNonQuery();

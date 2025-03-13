@@ -23,17 +23,18 @@ namespace QuanLyQuanAn1.DAO
            private set => singleton = value; 
         }
         private DataProvider() { }
-        DataTable datatable = new DataTable();
-        private string connectionString = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLyQuanAn;Integrated Security=True";
+       
+        private string connectionString = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLy;Integrated Security=True";
         public DataTable ExeCuteQuery(string query , object[] parameter = null)
         {
+            DataTable datatable = new DataTable();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                //string query = "select *from Account";
+               
                 SqlCommand cmd = new SqlCommand(query, connection);
 
-                //cmd.Parameters.AddWithValue("@username" , id);
+                
                 if(parameter != null )
                 {
                     int i = 0;
@@ -62,10 +63,10 @@ namespace QuanLyQuanAn1.DAO
             {
                 
                 connection.Open();
-                //string query = "select *from Account";
+                
                 SqlCommand cmd = new SqlCommand(query, connection);
 
-                //cmd.Parameters.AddWithValue("@username" , id);
+                
                 if (parameter != null)
                 {
                     int i = 0;
@@ -94,7 +95,7 @@ namespace QuanLyQuanAn1.DAO
             {
 
                 connection.Open();
-                //string query = "select *from Account";
+                
                 SqlCommand cmd = new SqlCommand(query, connection);
 
                 //cmd.Parameters.AddWithValue("@username" , id);
