@@ -36,6 +36,8 @@ namespace QuanLyQuanAn1
                 );
             if (kt == DialogResult.No) e.Cancel = true;
         }
+
+
         // kiem tra hợp lệ mật khẩu và password
         public bool loginn(string username, string password)
         {
@@ -46,6 +48,7 @@ namespace QuanLyQuanAn1
             {
                 userType = type(username, password);
                 Console.WriteLine(userType);
+                // tra ve neu ket qua dung / 
                 return true;
             }
             return false;
@@ -91,8 +94,6 @@ namespace QuanLyQuanAn1
             //frmtable.ShowDialog();
             //this.Show();
 
-
-
         }
 
         private void frmlogin_Load(object sender, EventArgs e)
@@ -104,6 +105,27 @@ namespace QuanLyQuanAn1
         {
             frmdangky frmdangky = new frmdangky();
             frmdangky.Show();
+        }
+
+        // ham tra ve ten dang  .
+        public string getTenDangNhap()
+        {
+            return txttendangnhap.Text;
+        }   
+        // ham tra ve mat khau .
+        public string getMatKhau()
+        {
+            return txtpassword.Text;
+        }
+            
+        public void txttendangnhap_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void txtpassword_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

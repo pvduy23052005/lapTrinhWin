@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="DAO\Account.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\tableDAO.cs" />
+    <Compile Include="DTO\table.cs" />
     <Compile Include="frmaccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,8 +156,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -111,7 +111,7 @@ namespace QuanLyQuanAn1
         }
 
         private void txthienthi_TextChanged(object sender, EventArgs e)
-        {
+        {       
 
         }
     }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyQuanAn1.DAO;
+using QuanLyQuanAn1.DTO;
 
 namespace QuanLyQuanAn1
 {
@@ -36,9 +38,40 @@ namespace QuanLyQuanAn1
            
         }
 
-        
+        // cap nhat danh sach ban . 
+        public void LoadTable()
+        {
+            List<table> tableList = tableDAO.Instance.LoadTableList();
 
-        
+            
+            // duyet qua cac tung doi tuong .   
+            foreach (table item in tableList)
+            {
+                // tao ra 1 button de hien thi  . 
+                Button btn = new Button()
+                {
+                    // xet thuoc tinh cao rong . 
+                    Width = 95,
+                    Height = 95
+                };
+
+                btn.Text = item.Name + Environment.NewLine + item.Status;
+
+                // ban nao trong thi may xanh . 
+                if( item.Status == "Available")
+                {
+                    btn.BackColor = Color.LightGreen;
+                }else // ban nao ko con thi mau hong . 
+                {
+                    btn.BackColor = Color.LightPink;
+                }
+
+                // them vao du lieu ra ngoif . 
+                 flowLayoutPanel1.Controls.Add(btn);
+                
+            }
+
+        }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -47,7 +80,7 @@ namespace QuanLyQuanAn1
         }
 
         private void thứcĂnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        { 
             frmthucan frmthucan = new frmthucan();
             frmthucan.Show();
 
@@ -67,6 +100,7 @@ namespace QuanLyQuanAn1
             
         }
 
+        void loadTable() { }
         private void doanhMụcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmdanhmuc frmdanhmuc = new frmdanhmuc();
@@ -141,10 +175,15 @@ namespace QuanLyQuanAn1
 
         private void frmtable_Load(object sender, EventArgs e)
         {
-
+            LoadTable();
         }
 
         private void lblloai_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel8_Paint(object sender, PaintEventArgs e)
         {
 
         }

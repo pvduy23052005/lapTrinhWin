@@ -22,9 +22,13 @@ namespace QuanLyQuanAn1
             Close();
         }
 
+        // load form account .
         private void frmaccount_Load(object sender, EventArgs e)
         {
-
+            // cho la ten dang nhap . 
+            frmlogin frmlogin = new frmlogin();
+            txtTenDangNhap.Text = frmlogin.getTenDangNhap(); 
+            txtPasword.Text = frmlogin.getMatKhau();
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
@@ -35,6 +39,9 @@ namespace QuanLyQuanAn1
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

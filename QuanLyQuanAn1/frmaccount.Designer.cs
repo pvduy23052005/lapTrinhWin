@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTenDangNhap = new System.Windows.Forms.TextBox();
             this.lbltendangnhap = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTenHienThi = new System.Windows.Forms.TextBox();
             this.lbltenhienthi = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPasword = new System.Windows.Forms.TextBox();
             this.lblpassword = new System.Windows.Forms.Label();
             this.btnthoat = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -59,7 +59,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtTenDangNhap);
             this.panel1.Controls.Add(this.lbltendangnhap);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 69);
@@ -67,13 +67,14 @@
             this.panel1.Size = new System.Drawing.Size(490, 73);
             this.panel1.TabIndex = 0;
             // 
-            // textBox1
+            // txtTenDangNhap
             // 
-            this.textBox1.Location = new System.Drawing.Point(161, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(237, 21);
-            this.textBox1.TabIndex = 1;
+            this.txtTenDangNhap.Location = new System.Drawing.Point(161, 26);
+            this.txtTenDangNhap.Name = "txtTenDangNhap";
+            this.txtTenDangNhap.ReadOnly = true;
+            this.txtTenDangNhap.Size = new System.Drawing.Size(237, 21);
+            this.txtTenDangNhap.TabIndex = 1;
+            this.txtTenDangNhap.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lbltendangnhap
             // 
@@ -89,7 +90,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.txtTenHienThi);
             this.panel2.Controls.Add(this.lbltenhienthi);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 148);
@@ -97,13 +98,13 @@
             this.panel2.Size = new System.Drawing.Size(490, 77);
             this.panel2.TabIndex = 1;
             // 
-            // textBox2
+            // txtTenHienThi
             // 
-            this.textBox2.Location = new System.Drawing.Point(161, 33);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(237, 21);
-            this.textBox2.TabIndex = 1;
+            this.txtTenHienThi.Location = new System.Drawing.Point(161, 33);
+            this.txtTenHienThi.Name = "txtTenHienThi";
+            this.txtTenHienThi.ReadOnly = true;
+            this.txtTenHienThi.Size = new System.Drawing.Size(237, 21);
+            this.txtTenHienThi.TabIndex = 1;
             // 
             // lbltenhienthi
             // 
@@ -119,21 +120,21 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel3.Controls.Add(this.textBox3);
+            this.panel3.Controls.Add(this.txtPasword);
             this.panel3.Controls.Add(this.lblpassword);
             this.panel3.Location = new System.Drawing.Point(3, 231);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(490, 77);
             this.panel3.TabIndex = 2;
             // 
-            // textBox3
+            // txtPasword
             // 
-            this.textBox3.Location = new System.Drawing.Point(161, 27);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(237, 21);
-            this.textBox3.TabIndex = 1;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.txtPasword.Location = new System.Drawing.Point(161, 27);
+            this.txtPasword.Name = "txtPasword";
+            this.txtPasword.ReadOnly = true;
+            this.txtPasword.Size = new System.Drawing.Size(237, 21);
+            this.txtPasword.TabIndex = 1;
+            this.txtPasword.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // lblpassword
             // 
@@ -285,13 +286,13 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTenDangNhap;
         private System.Windows.Forms.Label lbltendangnhap;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTenHienThi;
         private System.Windows.Forms.Label lbltenhienthi;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPasword;
         private System.Windows.Forms.Label lblpassword;
         private System.Windows.Forms.Button btnthoat;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
