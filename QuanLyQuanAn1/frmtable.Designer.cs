@@ -70,6 +70,7 @@
             this.btnThanhtoan = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.mudsoluong = new System.Windows.Forms.NumericUpDown();
+            this.khoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -164,7 +165,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(269, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(419, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -175,7 +176,8 @@
             this.adminToolStripMenuItem,
             this.thứcĂnToolStripMenuItem,
             this.doanhMụcToolStripMenuItem,
-            this.tàiKhoảnToolStripMenuItem});
+            this.tàiKhoảnToolStripMenuItem,
+            this.khoToolStripMenuItem});
             this.openToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
@@ -184,28 +186,28 @@
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.adminToolStripMenuItem.Text = "Doanh thu";
             this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
             // thứcĂnToolStripMenuItem
             // 
             this.thứcĂnToolStripMenuItem.Name = "thứcĂnToolStripMenuItem";
-            this.thứcĂnToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
+            this.thứcĂnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.thứcĂnToolStripMenuItem.Text = "Thực đơn";
             this.thứcĂnToolStripMenuItem.Click += new System.EventHandler(this.thứcĂnToolStripMenuItem_Click);
             // 
             // doanhMụcToolStripMenuItem
             // 
             this.doanhMụcToolStripMenuItem.Name = "doanhMụcToolStripMenuItem";
-            this.doanhMụcToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
+            this.doanhMụcToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.doanhMụcToolStripMenuItem.Text = "Doanh mục";
             this.doanhMụcToolStripMenuItem.Click += new System.EventHandler(this.doanhMụcToolStripMenuItem_Click);
             // 
             // tàiKhoảnToolStripMenuItem
             // 
             this.tàiKhoảnToolStripMenuItem.Name = "tàiKhoảnToolStripMenuItem";
-            this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
+            this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.tàiKhoảnToolStripMenuItem.Text = "Tài khoản";
             this.tàiKhoảnToolStripMenuItem.Click += new System.EventHandler(this.tàiKhoảnToolStripMenuItem_Click);
             // 
@@ -611,6 +613,13 @@
             0,
             0});
             // 
+            // khoToolStripMenuItem
+            // 
+            this.khoToolStripMenuItem.Name = "khoToolStripMenuItem";
+            this.khoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.khoToolStripMenuItem.Text = "Kho";
+            this.khoToolStripMenuItem.Click += new System.EventHandler(this.khoToolStripMenuItem_Click);
+            // 
             // frmtable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -702,5 +711,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.ToolStripMenuItem khoToolStripMenuItem;
     }
 }

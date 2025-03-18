@@ -149,5 +149,11 @@ namespace QuanLyQuanAn1
         {
            
         }
+
+        private void khoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmKho frmKho = new frmKho();
+            frmKho.Show();
+        }
     }
 }

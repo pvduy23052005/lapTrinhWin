@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="DAO\Account.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\NhapKhoDAO.cs" />
+    <Compile Include="DTO\NhapKhoDTO.cs" />
     <Compile Include="frmaccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +73,12 @@
     </Compile>
     <Compile Include="frmdoanhthu.Designer.cs">
       <DependentUpon>frmdoanhthu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKho.Designer.cs">
+      <DependentUpon>frmKho.cs</DependentUpon>
     </Compile>
     <Compile Include="frmlogin.cs">
       <SubType>Form</SubType>
@@ -97,6 +105,12 @@
       <DependentUpon>frmthucan.cs</DependentUpon>
     </Compile>
     <Compile Include="ketnoi.cs" />
+    <Compile Include="NhapKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhapKho.Designer.cs">
+      <DependentUpon>NhapKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="xuathoadon.cs">
@@ -104,6 +118,12 @@
     </Compile>
     <Compile Include="xuathoadon.Designer.cs">
       <DependentUpon>xuathoadon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XuatKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XuatKho.Designer.cs">
+      <DependentUpon>XuatKho.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmaccount.resx">
       <DependentUpon>frmaccount.cs</DependentUpon>
@@ -117,6 +137,9 @@
     <EmbeddedResource Include="frmdoanhthu.resx">
       <DependentUpon>frmdoanhthu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmKho.resx">
+      <DependentUpon>frmKho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmlogin.resx">
       <DependentUpon>frmlogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +152,9 @@
     <EmbeddedResource Include="frmthucan.resx">
       <DependentUpon>frmthucan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NhapKho.resx">
+      <DependentUpon>NhapKho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -140,6 +166,9 @@
     </Compile>
     <EmbeddedResource Include="xuathoadon.resx">
       <DependentUpon>xuathoadon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XuatKho.resx">
+      <DependentUpon>XuatKho.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -154,8 +183,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
