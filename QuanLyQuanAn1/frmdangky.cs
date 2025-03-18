@@ -71,7 +71,7 @@ namespace QuanLyQuanAn1
                 object KiemTra = DataProvider.Singleton.ExeCuteS(queryKTra, new object[] { tendangnhap });
                 if (KiemTra != null && (int)KiemTra > 0)
                 {
-                    MessageBox.Show("Ten Dang nhap da co!");
+                    MessageBox.Show("Tên đăng nhập đã có!");
                 }
                 else
                 {
@@ -82,7 +82,7 @@ namespace QuanLyQuanAn1
 
                         if (kt != 0)
                         {
-                            MessageBox.Show("Dang ky thanh cong");
+                            MessageBox.Show("Đăng ký thành công");
                                
                         }
                     }

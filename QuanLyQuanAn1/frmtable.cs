@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyQuanAn1.DAO;
 using QuanLyQuanAn1.DTO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace QuanLyQuanAn1
 {
@@ -38,6 +40,7 @@ namespace QuanLyQuanAn1
            
         }
 
+
         // cap nhat danh sach ban . 
         public void LoadTable()
         {
@@ -55,22 +58,40 @@ namespace QuanLyQuanAn1
                     Height = 95
                 };
 
+                // thêm event Click . 
+                btn.Click += btn_Click;
+                //cho them1 the tag .
+                btn.Tag = item; 
+
+
+                // tạo 1 ky tự cho button . 
                 btn.Text = item.Name + Environment.NewLine + item.Status;
 
                 // ban nao trong thi may xanh . 
-                if( item.Status == "Available")
+                if( item.Status == "Trống")
                 {
                     btn.BackColor = Color.LightGreen;
-                }else // ban nao ko con thi mau hong . 
+                }else // ban nao ko con thi mau hồng . 
                 {
                     btn.BackColor = Color.LightPink;
                 }
 
-                // them vao du lieu ra ngoif . 
+                // them vao du lieu ra 
                  flowLayoutPanel1.Controls.Add(btn);
                 
             }
 
+        }
+        public void showBill(int id)
+        { 
+        }
+
+
+        private void btn_Click(object sender, EventArgs e)
+        {
+            int tableId = ((sender as Button).Tag as table).ID;
+            showBill(tableId);
+            throw new NotImplementedException();
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,8 +104,8 @@ namespace QuanLyQuanAn1
         { 
             frmthucan frmthucan = new frmthucan();
             frmthucan.Show();
-
         }
+
 
         private void tàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -133,9 +154,11 @@ namespace QuanLyQuanAn1
 
         }
 
+        // btn them mon cho ban an . 
         private void btnthem_Click(object sender, EventArgs e)
         {
 
+           
         }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
@@ -172,10 +195,26 @@ namespace QuanLyQuanAn1
         {
 
         }
-
+        
         private void frmtable_Load(object sender, EventArgs e)
         {
             LoadTable();
+            // tao 1 class ket noi . 
+            ketnoi ketNoi = new ketnoi();
+
+            cmbmon.Items.Clear();
+
+            string query = "select * from FoodCategory";
+            DataTable kt = ketNoi.dsquanan(query);
+
+            // duyet qua tung rao roi add .
+            foreach (DataRow row in kt.Rows)
+            {
+                cmbloai.Items.Add(row["name"]);
+            }
+            
+        
+
         }
 
         private void lblloai_Click(object sender, EventArgs e)
@@ -184,6 +223,38 @@ namespace QuanLyQuanAn1
         }
 
         private void tableLayoutPanel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cmbloai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbloai_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            // lay ra id 
+            string ten = cmbloai.SelectedItem.ToString(); 
+            
+            string query = "select * from Food where idCategory = (select id from FoodCategory where name = N'" + ten + "')";
+
+            ketnoi ketNoi = new ketnoi(); 
+            
+            DataTable table = ketNoi.dsquanan(query);
+
+            cmbmon.Items.Clear();
+
+            // duyet qua tung rao roi add . .
+            foreach ( DataRow row in table.Rows)
+            {
+                cmbmon.Items.Add(row["name"]);
+            }
+
+            
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

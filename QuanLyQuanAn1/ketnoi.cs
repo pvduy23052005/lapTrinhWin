@@ -16,9 +16,14 @@ namespace QuanLyQuanAn1
 
             try
             {
-                SqlConnection con = new SqlConnection("Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLyQuanAn;Integrated Security=True");
+             
+                string t = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True";
+
+                // string t = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLyQuanAn;Integrated Security=True";
+                SqlConnection con = new SqlConnection(t);
                 con.Open();
                 DataTable dt = new DataTable();
+
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
                 adapter.Fill(dt);
                 con.Close();
