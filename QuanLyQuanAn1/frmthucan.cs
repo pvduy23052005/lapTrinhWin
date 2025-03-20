@@ -26,16 +26,16 @@ namespace QuanLyQuanAn1
 
         private void frmthucan_Load(object sender, EventArgs e)
         {
-           DataTable dt = db.dsquanan("select * from Food,FoodCetagory where Food.idCategory = FoodCetagory.id;");
+           DataTable dt = db.dsquanan("select * from Food,FoodCategory where Food.idCategory = FoodCategory.id;");
             dataviewthucdon.DataSource = dt;
             dataviewthucdon.Columns[0].Visible = false;
             dataviewthucdon.Columns[2].Visible = false;
             dataviewthucdon.Columns[4].Visible = false;
-            DataTable ds = db.dsquanan("select * from FoodCetagory ");
+            DataTable ds = db.dsquanan("select * from FoodCategory ");
             cbtimfood.DataSource = ds;
             cbtimfood.DisplayMember = "name";
             cbtimfood.ValueMember = "id";
-            DataTable dss = db.dsquanan("select * from FoodCetagory ");
+            DataTable dss = db.dsquanan("select * from FoodCategory ");
             cbdanhmuc.DataSource = dss;
             cbdanhmuc.DisplayMember = "name";
             cbdanhmuc.ValueMember = "id";
@@ -43,17 +43,17 @@ namespace QuanLyQuanAn1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataTable dt = db.dsquanan("select id from FoodCetagory where name = N'" + cbdanhmuc.Text + "'");
+            DataTable dt = db.dsquanan("select id from FoodCategory where name = N'" + cbdanhmuc.Text + "'");
             string x = dt.Rows[0]["id"].ToString();
             int g = Convert.ToInt32(x);
             MessageBox.Show(g.ToString());
             db.dsupdate("insert into Food (name, idCategory, price) values(N'" + tbten.Text.Trim() + "','" + g+ "','" + tbgia.Text + "')");
-            DataTable dtt = db.dsquanan("select * from Food,FoodCetagory where Food.idCategory = FoodCetagory.id;");
+            DataTable dtt = db.dsquanan("select * from Food,FoodCategory where Food.idCategory = FoodCategory.id;");
             dataviewthucdon.DataSource = dtt;
             dataviewthucdon.Columns[0].Visible = false;
             dataviewthucdon.Columns[2].Visible = false;
             dataviewthucdon.Columns[4].Visible = false;
-            DataTable ds = db.dsquanan("select * from FoodCetagory ");
+            DataTable ds = db.dsquanan("select * from FoodCategory ");
             cbtimfood.DataSource = ds;
             cbtimfood.DisplayMember = "name";
             cbtimfood.ValueMember = "id";
@@ -75,7 +75,7 @@ namespace QuanLyQuanAn1
         private void lbtim_Click(object sender, EventArgs e)
         {
 
-            DataTable dt = db.dsquanan("select * from Food,FoodCetagory where Food.idCategory = FoodCetagory.id;");
+            DataTable dt = db.dsquanan("select * from Food,FoodCategory where Food.idCategory = FoodCategory.id;");
             dataviewthucdon.DataSource = dt;
             dataviewthucdon.Columns[0].Visible = false;
             dataviewthucdon.Columns[2].Visible = false;
@@ -96,12 +96,12 @@ namespace QuanLyQuanAn1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DataTable x = db.dsquanan("select id from FoodCetagory where name = N'"+cbdanhmuc.Text+"'");
+            DataTable x = db.dsquanan("select id from FoodCategory where name = N'" + cbdanhmuc.Text+"'");
             string g = x.Rows[0]["id"].ToString();
             int h = Convert.ToInt32(g);
             MessageBox.Show(h.ToString());
             db.dsupdate("update Food set name = N'"+tbten.Text+"',price = '"+tbgia.Text+ "',idCategory = '"+h+"' where id = '"+tbid.Text+"'");
-            DataTable dtt = db.dsquanan("select * from Food,FoodCetagory where Food.idCategory = FoodCetagory.id;");
+            DataTable dtt = db.dsquanan("select * from Food,FoodCetagory where Food.idCategory = FoodCategory.id;");
             dataviewthucdon.DataSource = dtt;
             dataviewthucdon.Columns[0].Visible = false;
             dataviewthucdon.Columns[2].Visible = false;
@@ -111,7 +111,7 @@ namespace QuanLyQuanAn1
         private void button3_Click(object sender, EventArgs e)
         {
             db.dsupdate("delete from food where food.id = '" + tbid.Text + "'");
-            DataTable dt = db.dsquanan("select * from Food,FoodCetagory where Food.idCategory = FoodCetagory.id;");
+            DataTable dt = db.dsquanan("select * from Food,FoodCategory where Food.idCategory = FoodCategory.id;");
             dataviewthucdon.DataSource = dt;
             dataviewthucdon.Columns[0].Visible = false;
             dataviewthucdon.Columns[2].Visible = false;
@@ -121,7 +121,7 @@ namespace QuanLyQuanAn1
         private void cbtimfood_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            DataTable dt = db.dsquanan("select * from Food,FoodCetagory where Food.idCategory = FoodCetagory.id and FoodCetagory.name = N'" + cbtimfood.Text + "'");
+            DataTable dt = db.dsquanan("select * from Food,FoodCategory where Food.idCategory = FoodCategory.id and FoodCategory.name = N'" + cbtimfood.Text + "'");
             dataviewthucdon.DataSource = dt;
      
         }

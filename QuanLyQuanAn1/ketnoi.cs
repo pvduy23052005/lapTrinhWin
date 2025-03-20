@@ -19,7 +19,7 @@ namespace QuanLyQuanAn1
             try
             {
              
-                string t = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True";
+                string t = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=Duong;Integrated Security=True";
 
                 // string t = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLyQuanAn;Integrated Security=True";
                 SqlConnection con = new SqlConnection(t);
@@ -42,7 +42,7 @@ namespace QuanLyQuanAn1
         {
             try
             {
-                SqlConnection con = new SqlConnection("Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True");
+                SqlConnection con = new SqlConnection("Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=Duong;Integrated Security=True");
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
                 int row = cmd.ExecuteNonQuery();

@@ -48,7 +48,9 @@
   <ItemGroup>
     <Compile Include="DAO\Account.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\NhapKhoDAO.cs" />
     <Compile Include="DAO\tableDAO.cs" />
+    <Compile Include="DAO\XuatKhoDAO.cs" />
     <Compile Include="DTO\insertBill.cs" />
     <Compile Include="DTO\insertBillInfo.cs" />
     <Compile Include="DTO\insertFood.cs" />
@@ -78,11 +80,23 @@
     <Compile Include="frmdoanhthu.Designer.cs">
       <DependentUpon>frmdoanhthu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmkho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmkho.Designer.cs">
+      <DependentUpon>frmkho.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmlogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmlogin.Designer.cs">
       <DependentUpon>frmlogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhapKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhapKho.Designer.cs">
+      <DependentUpon>NhapKho.cs</DependentUpon>
     </Compile>
     <Compile Include="frmtable.cs">
       <SubType>Form</SubType>
@@ -111,6 +125,12 @@
     <Compile Include="xuathoadon.Designer.cs">
       <DependentUpon>xuathoadon.cs</DependentUpon>
     </Compile>
+    <Compile Include="XuatKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XuatKho.Designer.cs">
+      <DependentUpon>XuatKho.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmaccount.resx">
       <DependentUpon>frmaccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,8 +143,14 @@
     <EmbeddedResource Include="frmdoanhthu.resx">
       <DependentUpon>frmdoanhthu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmkho.resx">
+      <DependentUpon>frmkho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmlogin.resx">
       <DependentUpon>frmlogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhapKho.resx">
+      <DependentUpon>NhapKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmtable.resx">
       <DependentUpon>frmtable.cs</DependentUpon>
@@ -147,6 +173,9 @@
     </Compile>
     <EmbeddedResource Include="xuathoadon.resx">
       <DependentUpon>xuathoadon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XuatKho.resx">
+      <DependentUpon>XuatKho.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

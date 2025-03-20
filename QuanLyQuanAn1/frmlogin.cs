@@ -47,8 +47,7 @@ namespace QuanLyQuanAn1
             if(kt.Rows.Count > 0)
             {
                 userType = type(username, password);
-                Console.WriteLine(userType);
-                // tra ve neu ket qua dung / 
+               
                 return true;
             }
             return false;
@@ -73,26 +72,23 @@ namespace QuanLyQuanAn1
         {
 
 
-            //string user = txttendangnhap.Text;
-            //string pass = txtpassword.Text;
+            string user = txttendangnhap.Text;
+            string pass = txtpassword.Text;
 
-            //if (loginn(user, pass))
-            //{
-            //    frmtable frmtable = new frmtable();
-            //    this.Hide();
-            //    frmtable.ShowDialog();
-            //    this.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("tài khoản hoặc mật khẩu không hợp lệ");
+            if (loginn(user, pass))
+            {
+                frmtable frm = new frmtable();
+                this.Hide();
+                frm.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("tài khoản hoặc mật khẩu không hợp lệ");
 
-            //}
+            }
 
-            frmtable frmtable = new frmtable();
-            this.Hide();
-            frmtable.ShowDialog();
-            this.Show();
+            
 
         }
 
