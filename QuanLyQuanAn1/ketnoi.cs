@@ -11,6 +11,8 @@ namespace QuanLyQuanAn1
 {
     class ketnoi
     {
+        public SqlConnection Connection { get; internal set; }
+
         public DataTable dsquanan(string sql)
         {
 
@@ -40,17 +42,17 @@ namespace QuanLyQuanAn1
         {
             try
             {
-                SqlConnection con = new SqlConnection("Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLyQuanAn;Integrated Security=True");
+                SqlConnection con = new SqlConnection("Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True");
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
                 int row = cmd.ExecuteNonQuery();
                 if(row > 0)
                 {
-                    MessageBox.Show("thanh cong");
+                    MessageBox.Show("Thành công");
                 }
                 else
                 {
-                    MessageBox.Show("k thanh cong");
+                    MessageBox.Show("Đéo thành công");
                 }
                     con.Close();
                
@@ -60,6 +62,11 @@ namespace QuanLyQuanAn1
             {
                 MessageBox.Show("lỗi" + ex);
             }
+        }
+
+        internal void dsupdate(SqlCommand command)
+        {
+            throw new NotImplementedException();
         }
     }
 }

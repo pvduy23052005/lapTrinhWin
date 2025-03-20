@@ -21,11 +21,7 @@ namespace QuanLyQuanAn1.DAO
             private set { tableDAO.instance = value; }
         }
 
-        public static int tableWidth = 50;
-        public static int tableHeight = 50;
 
-
-        
         public tableDAO() {}
 
 
@@ -35,7 +31,7 @@ namespace QuanLyQuanAn1.DAO
 
             string connectionString = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True";
 
- 
+            // ham doi . 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

@@ -40,36 +40,33 @@
             this.thôngTinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel12 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btngiamgia = new System.Windows.Forms.Button();
-            this.mudgiamgia = new System.Windows.Forms.NumericUpDown();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btndoiban = new System.Windows.Forms.Button();
-            this.cmbdoiban = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnthem = new System.Windows.Forms.Button();
+            this.btnThanhtoan = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.cmbmon = new System.Windows.Forms.ComboBox();
+            this.cmbloai = new System.Windows.Forms.ComboBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblloai = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.lblmon = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cmbloai = new System.Windows.Forms.ComboBox();
+            this.cmbmon = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnThanhtoan = new System.Windows.Forms.Button();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.btnthem = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -78,13 +75,7 @@
             this.panel11.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
-            this.panel12.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mudgiamgia)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel9.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -95,6 +86,10 @@
             this.panel1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -112,8 +107,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(855, 487);
-            this.splitContainer1.SplitterDistance = 486;
+            this.splitContainer1.Size = new System.Drawing.Size(908, 487);
+            this.splitContainer1.SplitterDistance = 514;
             this.splitContainer1.TabIndex = 0;
             // 
             // tableLayoutPanel8
@@ -128,7 +123,7 @@
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.650924F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.34908F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(486, 487);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(514, 487);
             this.tableLayoutPanel8.TabIndex = 0;
             this.tableLayoutPanel8.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel8_Paint);
             // 
@@ -141,7 +136,7 @@
             this.panel11.Controls.Add(this.menuStrip1);
             this.panel11.Location = new System.Drawing.Point(3, 3);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(480, 40);
+            this.panel11.Size = new System.Drawing.Size(508, 40);
             this.panel11.TabIndex = 0;
             // 
             // menuStrip1
@@ -173,32 +168,33 @@
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(92, 25);
             this.openToolStripMenuItem.Text = "Lựa chọn";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
             this.adminToolStripMenuItem.Text = "Doanh thu";
             this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
             // thứcĂnToolStripMenuItem
             // 
             this.thứcĂnToolStripMenuItem.Name = "thứcĂnToolStripMenuItem";
-            this.thứcĂnToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.thứcĂnToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
             this.thứcĂnToolStripMenuItem.Text = "Thực đơn";
             this.thứcĂnToolStripMenuItem.Click += new System.EventHandler(this.thứcĂnToolStripMenuItem_Click);
             // 
             // doanhMụcToolStripMenuItem
             // 
             this.doanhMụcToolStripMenuItem.Name = "doanhMụcToolStripMenuItem";
-            this.doanhMụcToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.doanhMụcToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
             this.doanhMụcToolStripMenuItem.Text = "Doanh mục";
             this.doanhMụcToolStripMenuItem.Click += new System.EventHandler(this.doanhMụcToolStripMenuItem_Click);
             // 
             // tàiKhoảnToolStripMenuItem
             // 
             this.tàiKhoảnToolStripMenuItem.Name = "tàiKhoảnToolStripMenuItem";
-            this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
             this.tàiKhoảnToolStripMenuItem.Text = "Tài khoản";
             this.tàiKhoảnToolStripMenuItem.Click += new System.EventHandler(this.tàiKhoảnToolStripMenuItem_Click);
             // 
@@ -224,46 +220,24 @@
             // 
             this.tableLayoutPanel9.BackColor = System.Drawing.SystemColors.Highlight;
             this.tableLayoutPanel9.ColumnCount = 1;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.flowLayoutPanel1, 0, 1);
-            this.tableLayoutPanel9.Controls.Add(this.panel12, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 49);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 397F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(480, 435);
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.655172F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.34483F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(508, 435);
             this.tableLayoutPanel9.TabIndex = 1;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 41);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(474, 391);
-            this.flowLayoutPanel1.TabIndex = 0;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
-            // 
-            // panel12
-            // 
-            this.panel12.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel12.Controls.Add(this.label1);
-            this.panel12.Location = new System.Drawing.Point(3, 3);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(474, 32);
-            this.panel12.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(149, 3);
+            this.label1.Location = new System.Drawing.Point(176, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 25);
             this.label1.TabIndex = 3;
@@ -272,12 +246,12 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel9, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.listView1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -285,142 +259,24 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(365, 487);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(390, 487);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
-            // tableLayoutPanel4
+            // btnThanhtoan
             // 
-            this.tableLayoutPanel4.BackColor = System.Drawing.SystemColors.Highlight;
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.panel2, 2, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(359, 91);
-            this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnThanhtoan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.btngiamgia, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.mudgiamgia, 0, 1);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(122, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.75F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(113, 85);
-            this.tableLayoutPanel3.TabIndex = 6;
-            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
-            // 
-            // btngiamgia
-            // 
-            this.btngiamgia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btngiamgia.BackColor = System.Drawing.Color.DimGray;
-            this.btngiamgia.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btngiamgia.ForeColor = System.Drawing.Color.White;
-            this.btngiamgia.Location = new System.Drawing.Point(3, 3);
-            this.btngiamgia.Name = "btngiamgia";
-            this.btngiamgia.Size = new System.Drawing.Size(107, 43);
-            this.btngiamgia.TabIndex = 1;
-            this.btngiamgia.Text = "Giảm giá(%)";
-            this.btngiamgia.UseVisualStyleBackColor = false;
-            // 
-            // mudgiamgia
-            // 
-            this.mudgiamgia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mudgiamgia.Location = new System.Drawing.Point(3, 52);
-            this.mudgiamgia.Name = "mudgiamgia";
-            this.mudgiamgia.Size = new System.Drawing.Size(107, 21);
-            this.mudgiamgia.TabIndex = 2;
-            this.mudgiamgia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.btndoiban, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.cmbdoiban, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(113, 85);
-            this.tableLayoutPanel2.TabIndex = 5;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
-            // 
-            // btndoiban
-            // 
-            this.btndoiban.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btndoiban.BackColor = System.Drawing.Color.DimGray;
-            this.btndoiban.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btndoiban.ForeColor = System.Drawing.Color.White;
-            this.btndoiban.Location = new System.Drawing.Point(3, 3);
-            this.btndoiban.Name = "btndoiban";
-            this.btndoiban.Size = new System.Drawing.Size(107, 45);
-            this.btndoiban.TabIndex = 3;
-            this.btndoiban.Text = "Đổi bàn";
-            this.btndoiban.UseVisualStyleBackColor = false;
-            this.btndoiban.Click += new System.EventHandler(this.btndoiban_Click);
-            // 
-            // cmbdoiban
-            // 
-            this.cmbdoiban.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbdoiban.FormattingEnabled = true;
-            this.cmbdoiban.Location = new System.Drawing.Point(3, 54);
-            this.cmbdoiban.Name = "cmbdoiban";
-            this.cmbdoiban.Size = new System.Drawing.Size(107, 20);
-            this.cmbdoiban.TabIndex = 4;
-            this.cmbdoiban.UseWaitCursor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnThanhtoan);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(241, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(115, 85);
-            this.panel2.TabIndex = 7;
-            // 
-            // btnthem
-            // 
-            this.btnthem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnthem.BackColor = System.Drawing.Color.DimGray;
-            this.btnthem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnthem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnthem.Location = new System.Drawing.Point(10, 9);
-            this.btnthem.Name = "btnthem";
-            this.btnthem.Size = new System.Drawing.Size(71, 64);
-            this.btnthem.TabIndex = 4;
-            this.btnthem.Text = "Thêm món";
-            this.btnthem.UseVisualStyleBackColor = false;
-            this.btnthem.Click += new System.EventHandler(this.btnthem_Click);
+            this.btnThanhtoan.BackColor = System.Drawing.Color.DimGray;
+            this.btnThanhtoan.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhtoan.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnThanhtoan.Location = new System.Drawing.Point(0, 14);
+            this.btnThanhtoan.Name = "btnThanhtoan";
+            this.btnThanhtoan.Size = new System.Drawing.Size(64, 63);
+            this.btnThanhtoan.TabIndex = 0;
+            this.btnThanhtoan.Text = "Thanh toán";
+            this.btnThanhtoan.UseVisualStyleBackColor = false;
+            this.btnThanhtoan.Click += new System.EventHandler(this.btnThanhtoan_Click);
             // 
             // panel9
             // 
@@ -428,7 +284,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(3, 392);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(359, 92);
+            this.panel9.Size = new System.Drawing.Size(384, 92);
             this.panel9.TabIndex = 2;
             // 
             // tableLayoutPanel7
@@ -444,7 +300,7 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(359, 92);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(384, 92);
             this.tableLayoutPanel7.TabIndex = 7;
             // 
             // tableLayoutPanel5
@@ -464,40 +320,42 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.85185F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.14815F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(209, 86);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(224, 86);
             this.tableLayoutPanel5.TabIndex = 0;
             this.tableLayoutPanel5.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel5_Paint);
             // 
             // panel8
             // 
+            this.panel8.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel8.Controls.Add(this.cmbloai);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(63, 47);
+            this.panel8.Location = new System.Drawing.Point(67, 47);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(143, 36);
+            this.panel8.Size = new System.Drawing.Size(154, 36);
             this.panel8.TabIndex = 3;
             // 
-            // cmbmon
+            // cmbloai
             // 
-            this.cmbmon.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cmbloai.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbmon.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cmbmon.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbmon.FormattingEnabled = true;
-            this.cmbmon.Location = new System.Drawing.Point(0, 9);
-            this.cmbmon.Name = "cmbmon";
-            this.cmbmon.Size = new System.Drawing.Size(140, 25);
-            this.cmbmon.TabIndex = 3;
-            this.cmbmon.SelectedIndexChanged += new System.EventHandler(this.cmbmon_SelectedIndexChanged);
+            this.cmbloai.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbloai.FormattingEnabled = true;
+            this.cmbloai.Location = new System.Drawing.Point(0, 4);
+            this.cmbloai.Name = "cmbloai";
+            this.cmbloai.Size = new System.Drawing.Size(151, 25);
+            this.cmbloai.TabIndex = 2;
+            this.cmbloai.SelectedIndexChanged += new System.EventHandler(this.cmbloai_SelectedIndexChanged);
+            this.cmbloai.SelectionChangeCommitted += new System.EventHandler(this.cmbloai_SelectionChangeCommitted);
             // 
             // panel7
             // 
+            this.panel7.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel7.Controls.Add(this.lblloai);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(3, 47);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(54, 36);
+            this.panel7.Size = new System.Drawing.Size(58, 36);
             this.panel7.TabIndex = 2;
             // 
             // lblloai
@@ -521,16 +379,17 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(54, 38);
+            this.panel5.Size = new System.Drawing.Size(58, 38);
             this.panel5.TabIndex = 1;
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel6.Controls.Add(this.lblmon);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(54, 38);
+            this.panel6.Size = new System.Drawing.Size(58, 38);
             this.panel6.TabIndex = 1;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
@@ -550,26 +409,27 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel1.Controls.Add(this.cmbmon);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(63, 3);
+            this.panel1.Location = new System.Drawing.Point(67, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(143, 38);
+            this.panel1.Size = new System.Drawing.Size(154, 38);
             this.panel1.TabIndex = 0;
             // 
-            // cmbloai
+            // cmbmon
             // 
-            this.cmbloai.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cmbmon.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbloai.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbloai.FormattingEnabled = true;
-            this.cmbloai.Location = new System.Drawing.Point(0, 4);
-            this.cmbloai.Name = "cmbloai";
-            this.cmbloai.Size = new System.Drawing.Size(140, 25);
-            this.cmbloai.TabIndex = 2;
-            this.cmbloai.SelectedIndexChanged += new System.EventHandler(this.cmbloai_SelectedIndexChanged);
-            this.cmbloai.SelectionChangeCommitted += new System.EventHandler(this.cmbloai_SelectionChangeCommitted);
+            this.cmbmon.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cmbmon.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbmon.FormattingEnabled = true;
+            this.cmbmon.Location = new System.Drawing.Point(0, 9);
+            this.cmbmon.Name = "cmbmon";
+            this.cmbmon.Size = new System.Drawing.Size(151, 25);
+            this.cmbmon.TabIndex = 3;
+            this.cmbmon.SelectedIndexChanged += new System.EventHandler(this.cmbmon_SelectedIndexChanged);
             // 
             // tableLayoutPanel6
             // 
@@ -577,64 +437,143 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.21739F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.78261F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.67567F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.32433F));
             this.tableLayoutPanel6.Controls.Add(this.panel3, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.panel10, 1, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(218, 3);
+            this.tableLayoutPanel6.Controls.Add(this.panel4, 1, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(233, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(138, 86);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(148, 86);
             this.tableLayoutPanel6.TabIndex = 6;
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel3.Controls.Add(this.btnthem);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(84, 80);
+            this.panel3.Size = new System.Drawing.Size(69, 80);
             this.panel3.TabIndex = 7;
             // 
-            // btnThanhtoan
+            // btnthem
             // 
-            this.btnThanhtoan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnthem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThanhtoan.BackColor = System.Drawing.Color.DimGray;
-            this.btnThanhtoan.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThanhtoan.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnThanhtoan.Location = new System.Drawing.Point(16, 11);
-            this.btnThanhtoan.Name = "btnThanhtoan";
-            this.btnThanhtoan.Size = new System.Drawing.Size(75, 63);
-            this.btnThanhtoan.TabIndex = 0;
-            this.btnThanhtoan.Text = "Thanh toán";
-            this.btnThanhtoan.UseVisualStyleBackColor = false;
-            this.btnThanhtoan.Click += new System.EventHandler(this.btnThanhtoan_Click);
+            this.btnthem.BackColor = System.Drawing.Color.DimGray;
+            this.btnthem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnthem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnthem.Location = new System.Drawing.Point(3, 13);
+            this.btnthem.Name = "btnthem";
+            this.btnthem.Size = new System.Drawing.Size(66, 64);
+            this.btnthem.TabIndex = 4;
+            this.btnthem.Text = "Thêm món";
+            this.btnthem.UseVisualStyleBackColor = false;
+            this.btnthem.Click += new System.EventHandler(this.btnthem_Click);
             // 
-            // panel10
+            // dataGridView1
             // 
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(93, 3);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(42, 80);
-            this.panel10.TabIndex = 8;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.Highlight;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 100);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(384, 286);
+            this.dataGridView1.TabIndex = 3;
             // 
-            // listView1
+            // Column1
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 100);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(302, 195);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "name";
+            this.Column1.HeaderText = "Tên món";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.DataPropertyName = "price";
+            this.Column2.HeaderText = "Giá";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.DataPropertyName = "count";
+            this.Column3.HeaderText = "Số lượng ";
+            this.Column3.Name = "Column3";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 45);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(502, 387);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel4.Controls.Add(this.btnThanhtoan);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(78, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(67, 80);
+            this.panel4.TabIndex = 8;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel2.BackgroundImage = global::QuanLyQuanAn1.Properties.Resources.pngtree_street_cafe_with_coffee_and_snacks_at_night_image_1434125;
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(384, 91);
+            this.panel2.TabIndex = 4;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.9434F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.0566F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
+            this.tableLayoutPanel2.Controls.Add(this.label1, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(502, 36);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Edwardian Script ITC", 48F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(0, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(227, 76);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Quán Ăn";
             // 
             // frmtable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 487);
+            this.ClientSize = new System.Drawing.Size(908, 487);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmtable";
@@ -651,14 +590,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.mudgiamgia)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -671,6 +603,12 @@
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -687,21 +625,13 @@
         private System.Windows.Forms.ComboBox cmbloai;
         private System.Windows.Forms.Label lblmon;
         private System.Windows.Forms.Label lblloai;
-        private System.Windows.Forms.Button btndoiban;
-        private System.Windows.Forms.NumericUpDown mudgiamgia;
-        private System.Windows.Forms.Button btngiamgia;
         private System.Windows.Forms.Button btnThanhtoan;
-        private System.Windows.Forms.ComboBox cmbdoiban;
         private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thứcĂnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem doanhMụcToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tàiKhoảnToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
@@ -711,13 +641,18 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label2;
     }
 }

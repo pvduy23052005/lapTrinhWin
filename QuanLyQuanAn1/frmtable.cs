@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -61,11 +62,11 @@ namespace QuanLyQuanAn1
                 // thêm event Click . 
                 btn.Click += btn_Click;
                 //cho them1 the tag .
-                btn.Tag = item; 
+                btn.Tag = item;
 
 
                 // tạo 1 ky tự cho button . 
-                btn.Text = item.Name + Environment.NewLine + item.Status;
+                btn.Text = item.ID +  item.Name + Environment.NewLine + item.Status ;
 
                 // ban nao trong thi may xanh . 
                 if( item.Status == "Trống")
@@ -82,17 +83,43 @@ namespace QuanLyQuanAn1
             }
 
         }
-        public void showBill(int id)
-        { 
+
+        public int getIdTable (int id )
+        {
+            return id;
         }
-
-
+        // bat su kien hien thi hien thi danh sach mon an . 
         private void btn_Click(object sender, EventArgs e)
         {
-            int tableId = ((sender as Button).Tag as table).ID;
-            showBill(tableId);
-            throw new NotImplementedException();
+            try
+            {
+                ketnoi ketNoi = new ketnoi();
+                int tableId = ((sender as Button).Tag as table).ID;
+                dataGridView1.Tag = (sender as Button).Tag;
+
+                string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+tableId + "' ; \r\n";
+                
+                DataTable table = ketNoi.dsquanan(query);
+
+                // neu co mon moi hien thi . 
+                if (table != null && table.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = table;
+
+                }
+                else
+                {
+                    MessageBox.Show("Không có món ăn cho bàn này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch(Exception ex){
+  
+                MessageBox.Show(ex.Message);
+            }  
         }
+
+        
+
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -118,7 +145,6 @@ namespace QuanLyQuanAn1
             {
                 MessageBox.Show("Bạn không có quyền truy cập!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
         }
 
         void loadTable() { }
@@ -154,12 +180,48 @@ namespace QuanLyQuanAn1
 
         }
 
+
         // btn them mon cho ban an . 
         private void btnthem_Click(object sender, EventArgs e)
         {
+            // lay ra nhu .
+            table table = dataGridView1.Tag as table;
 
-           
+            ketnoi ketNoi = new ketnoi();
+            insertBill insertBill = new insertBill();
+            insertFood insertFood = new insertFood();
+            insertBillInfo insertBillInfo = new insertBillInfo(); 
+
+            // goi ham insert bill .
+            insertBill.InsertBill(table.ID);
+
+            try
+            {
+                // lay ra id cua bill vua moi khi them moi mon .
+                int idBill = insertBill.getIdBill();
+                // lay ve ifFood tu ma minh chon . 
+                int idFood = insertFood.getIdFood(cmbmon.SelectedItem.ToString());
+                if (idFood != -1)
+                {
+                    // goi ham inerBillInfo .  
+                    insertBillInfo.InsertBillInfo(idBill, idFood, 2);
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn món");
+                }
+
+            }
+            catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+
+            // load lai du lieu bang . 
+             string query = "SELECT \r\n Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' ; \r\n";
+            DataTable loadData = ketNoi.dsquanan(query);
+            dataGridView1.DataSource = loadData;
         }
+
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
         {
@@ -198,6 +260,7 @@ namespace QuanLyQuanAn1
         
         private void frmtable_Load(object sender, EventArgs e)
         {
+            label2.BackColor = Color.Transparent;
             LoadTable();
             // tao 1 class ket noi . 
             ketnoi ketNoi = new ketnoi();
@@ -205,6 +268,7 @@ namespace QuanLyQuanAn1
             cmbmon.Items.Clear();
 
             string query = "select * from FoodCategory";
+
             DataTable kt = ketNoi.dsquanan(query);
 
             // duyet qua tung rao roi add .
@@ -212,9 +276,6 @@ namespace QuanLyQuanAn1
             {
                 cmbloai.Items.Add(row["name"]);
             }
-            
-        
-
         }
 
         private void lblloai_Click(object sender, EventArgs e)
@@ -251,10 +312,15 @@ namespace QuanLyQuanAn1
                 cmbmon.Items.Add(row["name"]);
             }
 
-            
         }
 
+
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {   
+
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
