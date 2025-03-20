@@ -22,7 +22,8 @@ namespace QuanLyQuanAn1
         private void btndong_Click(object sender, EventArgs e)
         {
             XuatKho xuatKho = new XuatKho();
-            xuatKho.Show();
+            xuatKho.Owner = this;
+            xuatKho.ShowDialog();
         }
 
         private void btnxoa_Click(object sender, EventArgs e)
@@ -112,6 +113,8 @@ namespace QuanLyQuanAn1
                 if (DataKho.SelectedRows.Count > 0)
                 {
                     int id = int.Parse(txtIDNguyenLieu.Text);
+                    XuatKhoDAO.Instance.XoaKho(id);
+                    NhapKhoDAO.Instance.XoaKho(id);
                     string delete = "delete from KhoNguyenLieu where id = @id  ";
                     DataProvider.Singleton.ExeCuteNon(delete, new object[] { id });
                     LoadData();

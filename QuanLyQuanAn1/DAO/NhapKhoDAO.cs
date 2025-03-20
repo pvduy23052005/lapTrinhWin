@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using QuanLyQuanAn1.DTO;
+
 
 namespace QuanLyQuanAn1.DAO
 {
@@ -68,7 +68,7 @@ namespace QuanLyQuanAn1.DAO
             DataProvider.Singleton.ExeCuteNon(query , new object[] {idNguyenLieu , soLuong , giaNhap , ngayNhap });
 
         }
-
+       
         public void NhapKho(int idN, string tenNL, float soLuong, string donViTinh, float giaNhap, string  ngayNhap)
         {
            
@@ -98,7 +98,14 @@ namespace QuanLyQuanAn1.DAO
             }
         public bool XoaNhapKho(int id)
         {
-            string query = "DELETE FROM NhapKho WHERE id = @id";
+            string query = "DELETE FROM NhapKho WHERE id = @id ";
+            int result = DataProvider.Singleton.ExeCuteNon(query, new object[] { id });
+            return result > 0;
+        }
+        public bool XoaKho(int id)
+        {
+
+            string query = "DELETE FROM NhapKho WHERE idnguyenlieu = @id ";
             int result = DataProvider.Singleton.ExeCuteNon(query, new object[] { id });
             return result > 0;
         }

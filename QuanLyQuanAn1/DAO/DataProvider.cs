@@ -24,7 +24,7 @@ namespace QuanLyQuanAn1.DAO
         }
         private DataProvider() { }
        
-        private string connectionString = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanCuaDuong;Integrated Security=True";
+        private string connectionString = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuong;Integrated Security=True";
         public DataTable ExeCuteQuery(string query , object[] parameter = null)
         {
             DataTable datatable = new DataTable();
