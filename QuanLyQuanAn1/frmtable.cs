@@ -21,7 +21,10 @@ namespace QuanLyQuanAn1
         {
             InitializeComponent();
         }
-
+        ketnoi ketNoi = new ketnoi();
+        insertBill insertBill = new insertBill();
+        insertFood insertFood = new insertFood();
+        insertBillInfo insertBillInfo = new insertBillInfo();
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -93,11 +96,11 @@ namespace QuanLyQuanAn1
         {
             try
             {
-                ketnoi ketNoi = new ketnoi();
+               
                 int tableId = ((sender as Button).Tag as table).ID;
                 dataGridView1.Tag = (sender as Button).Tag;
 
-                string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+tableId + "' ; \r\n";
+                string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+tableId + "'and Bill.gio IS NULL ; \r\n";
                 
                 DataTable table = ketNoi.dsquanan(query);
 
@@ -166,9 +169,36 @@ namespace QuanLyQuanAn1
 
         private void btnThanhtoan_Click(object sender, EventArgs e)
         {
+
+
+             table table = dataGridView1.Tag as table;
+
+            if (table == null)
+            {
+                MessageBox.Show("Vui lòng chọn bàn để thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+             
+         int  idBill = insertBill.GetCurrentBillId(table.ID);
+            MessageBox.Show($"Hóa đơn ID: {idBill}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Mở form xuất hóa đơn
             xuathoadon f = new xuathoadon();
-            f.Show();
+     
+            f.cblayban.Text = "Bàn " + table.ID.ToString(); // Gán đúng ID bàn
+         
+            f.ShowDialog();
+            
+            string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.gio IS NULL ; \r\n";
+
+          DataTable dt =  ketNoi.dsquanan(query);
+            dataGridView1.DataSource = dt;
+            insertBill.InsertBill(table.ID);
         }
+        
+
+        
+        
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -187,20 +217,28 @@ namespace QuanLyQuanAn1
             // lay ra nhu .
             table table = dataGridView1.Tag as table;
 
-            ketnoi ketNoi = new ketnoi();
-            insertBill insertBill = new insertBill();
-            insertFood insertFood = new insertFood();
-            insertBillInfo insertBillInfo = new insertBillInfo(); 
-
+            /*   ketnoi ketNoi = new ketnoi();
+               insertBill insertBill = new insertBill();
+               insertFood insertFood = new insertFood();
+               insertBillInfo insertBillInfo = new insertBillInfo(); 
+            */
+        
+         
             // goi ham insert bill .
-            insertBill.InsertBill(table.ID);
+         //   insertBill.InsertBill(table.ID);
 
             try
             {
-                // lay ra id cua bill vua moi khi them moi mon .
-                int idBill = insertBill.getIdBill();
-                // lay ve ifFood tu ma minh chon . 
+                /*      // lay ra id cua bill vua moi khi them moi mon .
+                      int idBill = insertBill.getIdBill();
+                      // lay ve ifFood tu ma minh chon . 
+                      int idFood = insertFood.getIdFood(cmbmon.SelectedItem.ToString());
+                */
+                // Lấy ID hóa đơn hiện tại của bàn (tạo mới nếu chưa có)
+                int idBill = insertBill.GetCurrentBillId(table.ID);
+                MessageBox.Show(idBill.ToString());
                 int idFood = insertFood.getIdFood(cmbmon.SelectedItem.ToString());
+
                 if (idFood != -1)
                 {
                     // goi ham inerBillInfo .  
@@ -217,7 +255,7 @@ namespace QuanLyQuanAn1
             }
 
             // load lai du lieu bang . 
-             string query = "SELECT \r\n Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' ; \r\n";
+             string query = "SELECT \r\n Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' and Bill.gio IS NULL ; \r\n";
             DataTable loadData = ketNoi.dsquanan(query);
             dataGridView1.DataSource = loadData;
         }
@@ -262,8 +300,8 @@ namespace QuanLyQuanAn1
         {
             label2.BackColor = Color.Transparent;
             LoadTable();
-            // tao 1 class ket noi . 
-            ketnoi ketNoi = new ketnoi();
+        
+          
 
             cmbmon.Items.Clear();
 
@@ -329,6 +367,17 @@ namespace QuanLyQuanAn1
         {
             frmkho frmkho = new frmkho();
             frmkho.Show();
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void qunalikhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            quanlihd f = new quanlihd();
+            f.Show();
         }
     }
 }

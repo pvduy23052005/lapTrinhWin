@@ -15,26 +15,53 @@ namespace QuanLyQuanAn1.DTO
         ketnoi ketNoi = new ketnoi();
 
         public void InsertBill(int tableId)
+         {
+             try
+             {
+
+                 // Lấy ID của bàn từ đối tượng tabe ;
+                 ketnoi ketNoi = new ketnoi();
+
+                 // Câu truy vấn SQL với tham số hóa để tránh SQL Injection
+                 string query = "INSERT INTO Bill (DateCheckIn, gio, idTable, status) " +
+                                 "VALUES (GETDATE(), NULL, '" + tableId + "', 0)";
+
+                 // tao 1 ban ghi moi . 
+                 ketNoi.dsupdate(query);
+
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show(ex.Message); // Hiển thị lỗi nếu có
+             }
+         }
+        public int GetCurrentBillId(int tableId)
         {
             try
             {
-
-                // Lấy ID của bàn từ đối tượng tabe ;
                 ketnoi ketNoi = new ketnoi();
+                string query = "SELECT id FROM Bill WHERE idTable = '" + tableId + "' AND status = 0";
 
-                // Câu truy vấn SQL với tham số hóa để tránh SQL Injection
-                string query = "INSERT INTO Bill (DateCheckIn, DateCheckout, idTable, status) " +
-                                "VALUES (GETDATE(), NULL, '" + tableId + "', 0)";
+                DataTable data = ketNoi.dsquanan(query);
 
-                // tao 1 ban ghi moi . 
-                ketNoi.dsupdate(query);
-
+                if (data.Rows.Count > 0)
+                {
+                    return Convert.ToInt32(data.Rows[0][0]); // Lấy ID của bill đang mở
+                }
+                else
+                {
+                    // Nếu không có bill nào đang mở, tạo bill mới
+                    InsertBill(tableId);
+                    return getIdBill(); // Lấy ID của bill vừa tạo
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message); // Hiển thị lỗi nếu có
+                MessageBox.Show(ex.Message);
+                return -1;
             }
         }
+
 
         public int getIdBill()
         {
@@ -50,5 +77,6 @@ namespace QuanLyQuanAn1.DTO
             // tra ve idBIll via them . 
             return idBill;
         }
+      
     }
 }

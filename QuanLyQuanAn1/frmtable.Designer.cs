@@ -37,6 +37,7 @@
             this.thứcĂnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.doanhMụcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.khoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
@@ -65,7 +66,7 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.khoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.qunalikhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -152,7 +153,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(101, 6);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(513, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(363, 36);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -164,7 +165,8 @@
             this.thứcĂnToolStripMenuItem,
             this.doanhMụcToolStripMenuItem,
             this.tàiKhoảnToolStripMenuItem,
-            this.khoToolStripMenuItem});
+            this.khoToolStripMenuItem,
+            this.qunalikhoToolStripMenuItem});
             this.openToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
@@ -199,6 +201,13 @@
             this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.tàiKhoảnToolStripMenuItem.Text = "Tài khoản";
             this.tàiKhoảnToolStripMenuItem.Click += new System.EventHandler(this.tàiKhoảnToolStripMenuItem_Click);
+            // 
+            // khoToolStripMenuItem
+            // 
+            this.khoToolStripMenuItem.Name = "khoToolStripMenuItem";
+            this.khoToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
+            this.khoToolStripMenuItem.Text = "Kho";
+            this.khoToolStripMenuItem.Click += new System.EventHandler(this.khoToolStripMenuItem_Click);
             // 
             // thôngTinToolStripMenuItem
             // 
@@ -240,7 +249,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.9434F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.0566F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 169F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
@@ -255,7 +264,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(174, 0);
+            this.label1.Location = new System.Drawing.Point(172, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 35);
             this.label1.TabIndex = 3;
@@ -288,6 +297,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(390, 487);
             this.tableLayoutPanel1.TabIndex = 5;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // panel9
             // 
@@ -551,12 +561,12 @@
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             // 
-            // khoToolStripMenuItem
+            // qunalikhoToolStripMenuItem
             // 
-            this.khoToolStripMenuItem.Name = "khoToolStripMenuItem";
-            this.khoToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
-            this.khoToolStripMenuItem.Text = "Kho";
-            this.khoToolStripMenuItem.Click += new System.EventHandler(this.khoToolStripMenuItem_Click);
+            this.qunalikhoToolStripMenuItem.Name = "qunalikhoToolStripMenuItem";
+            this.qunalikhoToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
+            this.qunalikhoToolStripMenuItem.Text = "qunalikho";
+            this.qunalikhoToolStripMenuItem.Click += new System.EventHandler(this.qunalikhoToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -668,5 +678,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem khoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem qunalikhoToolStripMenuItem;
     }
 }
