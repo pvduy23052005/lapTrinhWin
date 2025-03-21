@@ -25,9 +25,9 @@ namespace QuanLyQuanAn1
             string tendangnhap = txtdangnhap.Text;
             string tenhienthi = txthienthi.Text;
             string matkhau = txtmatkhau.Text;
-            string loai = (txtloai.Text);
+            string nhaplaimatkhau = txtNhaplaimatkhau.Text;
             bool check = true;
-            int loaii;
+           
             if(tendangnhap == "")
             {
                 errorProvider1.SetError(txtdangnhap, "Mời bạn nhập tên đăng nhập");
@@ -44,25 +44,25 @@ namespace QuanLyQuanAn1
                 check = false;
             }
             
-
-            if (int.TryParse(txtloai.Text, out loaii) == false)
+            if(nhaplaimatkhau == "")
             {
-                errorProvider1.SetError(txtloai, "Loại sai định dạng!");
+                errorProvider1.SetError(txtNhaplaimatkhau, "Mời bạn nhập mật khẩu");
                 check = false;
-
             }
-            else
+            if(matkhau != nhaplaimatkhau)
             {
-                if (loaii != 0 && loaii != 1)
-                {
-                    check = false;
-                    errorProvider1.SetError(txtloai, "Loại không hợp lệ!");
-                }
+                errorProvider1.SetError(txtNhaplaimatkhau, "Mời bạn nhập mật khẩu đúng");
+                txtNhaplaimatkhau.Text = "";
+                check = false;
+                return;
             }
+            
+            
 
             if (check == false)
             {
                 MessageBox.Show("Bạn đăng ký không thành công");
+                
 
             }
             else
@@ -77,12 +77,13 @@ namespace QuanLyQuanAn1
                 {
                     try
                     {
-                        string queryInsert = "INSERT INTO Account (username) VALUES ( @username )";
-                        int kt = DataProvider.Singleton.ExeCuteNon(queryInsert, new object[] { tendangnhap });
+                        string queryInsert = "INSERT INTO Account ( username , displayname , password ) VALUES ( @username , @displayname , @password )";
+                        int kt = DataProvider.Singleton.ExeCuteNon(queryInsert, new object[] { tendangnhap , tenhienthi , matkhau });
 
                         if (kt != 0)
                         {
                             MessageBox.Show("Đăng ký thành công");
+                            Close();
                                
                         }
                     }
@@ -112,6 +113,11 @@ namespace QuanLyQuanAn1
 
         private void txthienthi_TextChanged(object sender, EventArgs e)
         {       
+
+        }
+
+        private void frmdangky_Load(object sender, EventArgs e)
+        {
 
         }
     }
