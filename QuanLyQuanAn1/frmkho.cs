@@ -79,7 +79,7 @@ namespace QuanLyQuanAn1
                 int checkID = (int)DataProvider.Singleton.ExeCuteS(querycheck, new object[] { id });
                 if (checkID == 0)
                 {
-                    string insert = "INSERT INTO KhoNguyenLieu (tenNguyenLieu, soLuong, donViTinh, giaNhap, ngayNhap) VALUES (@tennguyenlieu, @soluong, @donvitinh, @gianhap, @date)";
+                    string insert = "INSERT INTO KhoNguyenLieu (tenNguyenLieu, soLuong, donViTinh, giaNhap, ngayNhap) VALUES ( @tennguyenlieu , @soluong , @donvitinh , @gianhap , @date )";
                     DataProvider.Singleton.ExeCuteNon(insert, new object[] { TenNguyenLieu, soluong, DonViTinh, GiaNhap, Date });
                     MessageBox.Show("Thêm thành công");
                     LoadData();

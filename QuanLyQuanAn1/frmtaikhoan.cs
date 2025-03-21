@@ -30,11 +30,14 @@ namespace QuanLyQuanAn1
 
 
 
+            loadData();
 
+        }
+        void loadData()
+        {
             string query = "SELECT * FROM Account";
             DataTable dt = DataProvider.Singleton.ExeCuteQuery(query);
             dataAccount.DataSource = dt;
-
         }
         // chọn dòng nào datagridview sẽ hiện lên bên phải
         private void dataAccount_SelectionChanged(object sender, EventArgs e)
@@ -115,16 +118,7 @@ namespace QuanLyQuanAn1
                 else
                 {
                     MessageBox.Show("Thêm tài khoản thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DataTable dt = (DataTable)dataAccount.DataSource;
-                    if (dt != null)
-                    {
-                        DataRow newRow = dt.NewRow();
-                        newRow["Username"] = tendangnhap;
-                        newRow["Displayname"] = tenhienthi;
-                        newRow["PassWord"] = matkhau;
-                        newRow["Type"] = loai;
-                        dt.Rows.Add(newRow);
-                    }
+                    loadData();
                    
                 }
             }
@@ -189,21 +183,8 @@ namespace QuanLyQuanAn1
                 {
                     MessageBox.Show("Sửa tài khoản thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    
-                    DataTable dt = (DataTable)dataAccount.DataSource;
-                    if (dt != null)
-                    {
-                        foreach (DataRow row in dt.Rows)
-                        {
-                            if (row["Username"].ToString() == tendangnhap)
-                            {
-                                row["Displayname"] = tenhienthi;
-                                row["PassWord"] = matkhau;
-                                row["Type"] = loai;
-                                break;
-                            }
-                        }
-                    }
+
+                    loadData();
                 }
             }
             
@@ -243,6 +224,7 @@ namespace QuanLyQuanAn1
                 {
                     MessageBox.Show("Xóa tài khoản thành công!");
 
+                    loadData();
 
                 }
             }

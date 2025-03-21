@@ -97,8 +97,11 @@ namespace QuanLyQuanAn1
                 int tableId = ((sender as Button).Tag as table).ID;
                 dataGridView1.Tag = (sender as Button).Tag;
 
-                string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+tableId + "' ; \r\n";
-                
+                string query = "SELECT BillInfo.id ,TableFood.id , Bill.id ,  \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+tableId + "' ; \r\n";
+
+
+                dataGridView1.Columns[0].Visible = false;
+
                 DataTable table = ketNoi.dsquanan(query);
 
                 // neu co mon moi hien thi . 
@@ -276,6 +279,8 @@ namespace QuanLyQuanAn1
             {
                 cmbloai.Items.Add(row["name"]);
             }
+            
+
         }
 
         private void lblloai_Click(object sender, EventArgs e)
@@ -329,6 +334,78 @@ namespace QuanLyQuanAn1
         {
             frmkho frmkho = new frmkho();
             frmkho.Show();
+
+        }
+
+        public string idBillInfo, idTable, idBill;
+
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                idBillInfo = row.Cells[0].Value.ToString();
+                idTable = row.Cells[1].Value.ToString();
+                idBill = row.Cells[2].Value.ToString();
+                textBox1.Text = idBillInfo + idTable + idBill;
+            }           
+
+            //idBillInfo = dataGridView1.CurrentRow.Cells[0].ToString();
+            //idTable = dataGridView1.CurrentRow.Cells[1].ToString();
+            //idBill = dataGridView1.CurrentRow.Cells[2].ToString();
+            //textBox1.Text = idBillInfo + idTable + idBill; 
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string deleteBillInfo = "delete from BillInfo where BillInfo.id = '"+idBillInfo +"'";
+
+            string deleteBill = "delete from Bill where Bill.id = '"+idBill +"' ";
+
+            ketnoi ketNoi = new ketnoi();
+
+            try
+            {
+                ketNoi.dsupdate(deleteBillInfo);
+                ketNoi.dsupdate(deleteBill);
+                MessageBox.Show("Xóa thành công billinfo");
+            }
+            catch
+            {
+                MessageBox.Show("Xóa đéo thành công billinfo");
+            }
+
+            try
+            {
+                ketNoi.dsupdate(deleteBill);
+                MessageBox.Show("Xóa thành công bill");
+            }
+            catch
+            {
+                MessageBox.Show("Xóa đéo thành công bil");
+            }
+
+
+            // load lai du lieu bang . 
+            string query = "SELECT \r\n Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + idTable + "' ; \r\n";
+            DataTable loadData = ketNoi.dsquanan(query);
+            dataGridView1.DataSource = loadData;
+
+
+        }
+
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

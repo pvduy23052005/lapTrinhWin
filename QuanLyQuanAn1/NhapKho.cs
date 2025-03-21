@@ -73,7 +73,7 @@ namespace QuanLyQuanAn1
                 if (check != -1)
                 {
                     string query = "SELECT Tennguyenlieu, GIAnhap, DONVITINH FROM KHONGUYENLIEU WHERE ID = @check ";
-                    string connectionStr = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuong;Integrated Security=True";
+                    string connectionStr = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=Duong;Integrated Security=True";
                     SqlConnection sqlConnection = new SqlConnection(connectionStr);
                     sqlConnection.Open();
                     SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
