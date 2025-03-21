@@ -16,7 +16,7 @@ namespace QuanLyQuanAn1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmtable());
+            Application.Run(new frmlogin());
         }
     }
 }

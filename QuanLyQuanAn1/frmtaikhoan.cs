@@ -30,10 +30,10 @@ namespace QuanLyQuanAn1
 
 
 
-            loadData();
+            LoadAccount();
 
         }
-        void loadData()
+        void LoadAccount()
         {
             string query = "SELECT * FROM Account";
             DataTable dt = DataProvider.Singleton.ExeCuteQuery(query);
@@ -49,6 +49,7 @@ namespace QuanLyQuanAn1
                 txtTenHienThi.Text = row.Cells[1].Value.ToString();
                 txtMatKhau.Text = row.Cells[2].Value.ToString();
                 cbLoai.Text = row.Cells[3].Value.ToString();
+                txttrangthai.Text = row.Cells[4].Value.ToString();
             }
         }
 
@@ -66,19 +67,19 @@ namespace QuanLyQuanAn1
             string tenhienthi = txtTenHienThi.Text.Trim();
             string matkhau = txtMatKhau.Text.Trim();
             string loai = cbLoai.Text.Trim();
+            string trangthai = txttrangthai.Text.Trim();
 
-            
-            if (string.IsNullOrEmpty(tendangnhap))
+            if (tendangnhap == "")
             {
                 errorProvider1.SetError(txtTenDangNhap, "Vui lòng nhập tên đăng nhập");
                 isValid = false;
             }
-            if (string.IsNullOrEmpty(tenhienthi))
+            if (tenhienthi == "")
             {
                 errorProvider1.SetError(txtTenHienThi, "Vui lòng nhập tên hiển thị");
                 isValid = false;
             }
-            if (string.IsNullOrEmpty(matkhau))
+            if (matkhau == "")
             {
                 errorProvider1.SetError(txtMatKhau, "Vui lòng nhập mật khẩu");
                 isValid = false;
@@ -88,10 +89,14 @@ namespace QuanLyQuanAn1
                 errorProvider1.SetError(cbLoai, "Loại chỉ có thể là 0 hoặc 1");
                 isValid = false;
             }
-
+            if (trangthai == "")
+            {
+                errorProvider1.SetError(txttrangthai, "Vui lòng nhập trạng thái");
+                isValid = false;
+            }
             if (!isValid)
             {
-                MessageBox.Show("Thêm tài khoản không thành công", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập đầy đủ các trường", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -105,11 +110,11 @@ namespace QuanLyQuanAn1
                 return;
             }
 
-            
+
             try
             {
-                string insertQuery = "INSERT INTO Account (Username, Displayname, PassWord, Type) VALUES ( @username , @displayname , @password , @type )";
-                int add = DataProvider.Singleton.ExeCuteNon(insertQuery, new object[] { tendangnhap, tenhienthi, matkhau, loai });
+                string insertQuery = "INSERT INTO Account (Username, Displayname, PassWord, Type , trangthai ) VALUES ( @username , @displayname , @password , @type , @trangthai )";
+                int add = DataProvider.Singleton.ExeCuteNon(insertQuery, new object[] { tendangnhap, tenhienthi, matkhau, loai, trangthai });
 
                 if (add == 0)
                 {
@@ -118,11 +123,11 @@ namespace QuanLyQuanAn1
                 else
                 {
                     MessageBox.Show("Thêm tài khoản thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    loadData();
-                   
+                    LoadAccount();
+
                 }
             }
-            
+
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi : " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -143,18 +148,19 @@ namespace QuanLyQuanAn1
             string tenhienthi = txtTenHienThi.Text.Trim();
             string matkhau = txtMatKhau.Text.Trim();
             string loai = cbLoai.Text.Trim();
+            string trangthai = txttrangthai.Text.Trim();
 
-            if (string.IsNullOrEmpty(tendangnhap))
+            if (tendangnhap == "")
             {
                 errorProvider1.SetError(txtTenDangNhap, "Vui lòng nhập tên đăng nhập");
                 isValid = false;
             }
-            if (string.IsNullOrEmpty(tenhienthi))
+            if (tenhienthi == "")
             {
                 errorProvider1.SetError(txtTenHienThi, "Vui lòng nhập tên hiển thị");
                 isValid = false;
             }
-            if (string.IsNullOrEmpty(matkhau))
+            if (matkhau == "")
             {
                 errorProvider1.SetError(txtMatKhau, "Vui lòng nhập mật khẩu");
                 isValid = false;
@@ -162,6 +168,11 @@ namespace QuanLyQuanAn1
             if (loai != "0" && loai != "1")
             {
                 errorProvider1.SetError(cbLoai, "Vui lòng nhập đúng loại");
+                isValid = false;
+            }
+            if (trangthai == "")
+            {
+                errorProvider1.SetError(txttrangthai, "Vui lòng nhập trạng thái");
                 isValid = false;
             }
 
@@ -172,8 +183,8 @@ namespace QuanLyQuanAn1
             }
             try
             {
-                string query = "UPDATE Account SET Displayname = @displayname , PassWord = @password , Type = @type WHERE Username = @user ";
-                int kt = DataProvider.Singleton.ExeCuteNon(query, new object[] { tenhienthi, matkhau, loai, tendangnhap });
+                string query = "UPDATE Account SET Displayname = @displayname , PassWord = @password , Type = @type , trangthai = @trangthai WHERE Username = @user ";
+                int kt = DataProvider.Singleton.ExeCuteNon(query, new object[] { tenhienthi, matkhau, loai, tendangnhap, trangthai });
 
                 if (kt == 0)
                 {
@@ -184,10 +195,10 @@ namespace QuanLyQuanAn1
                     MessageBox.Show("Sửa tài khoản thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                    loadData();
+                    LoadAccount();
                 }
             }
-            
+
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -197,14 +208,15 @@ namespace QuanLyQuanAn1
 
         private void btnxoa_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 string username = "";
                 if (dataAccount.SelectedRows.Count > 0)
                 {
                     DataGridViewRow dataGridViewRows = dataAccount.SelectedRows[0];
-                   if ( dataGridViewRows.Cells[0].Value.ToString() != null){
+                    if (dataGridViewRows.Cells[0].Value.ToString() != null)
+                    {
                         username = dataGridViewRows.Cells[0].Value.ToString();
                     }
                 }
@@ -214,7 +226,7 @@ namespace QuanLyQuanAn1
                     return;
                 }
                 string query = "delete from Account where username = @username ";
-                int checkquery = (int)DataProvider.Singleton.ExeCuteNon(query , new object[] { username });
+                int checkquery = (int)DataProvider.Singleton.ExeCuteNon(query, new object[] { username });
                 if (checkquery == 0)
                 {
                     MessageBox.Show("Xóa tài khoản không thành công!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -223,15 +235,46 @@ namespace QuanLyQuanAn1
                 else
                 {
                     MessageBox.Show("Xóa tài khoản thành công!");
-
-                    loadData();
+                    LoadAccount();
 
                 }
             }
-            
+
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
+
+        private void btnduyet_Click(object sender, EventArgs e)
+        {
+            string username = "";
+            try
+            {
+                if (dataAccount.SelectedRows.Count > 0)
+                {
+                    username = dataAccount.SelectedRows[0].Cells[0].Value.ToString();
+                }
+                if (username == "")
+                {
+                    MessageBox.Show("Vui lòng chọn nhân viên");
+                    return;
+                }
+                string query = "UPDATE Account SET TrangThai = 1 WHERE Username = @Username ";
+                int check = DataProvider.Singleton.ExeCuteNon(query, new object[] { username });
+                if (check == 0)
+                {
+                    MessageBox.Show("Lỗi");
+                }
+                else
+                {
+                    MessageBox.Show("Duyệt tài khoản thành công");
+                    LoadAccount();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
