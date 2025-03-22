@@ -69,16 +69,10 @@ namespace QuanLyQuanAn1
 
 
                 // tạo 1 ky tự cho button . 
-                btn.Text = item.ID +  item.Name + Environment.NewLine + item.Status ;
+                btn.Text = /*item.ID +*/  item.Name + Environment.NewLine ;
 
-                // ban nao trong thi may xanh . 
-                if( item.Status == "Trống")
-                {
-                    btn.BackColor = Color.LightGreen;
-                }else // ban nao ko con thi mau hồng . 
-                {
-                    btn.BackColor = Color.LightPink;
-                }
+                   btn.BackColor = Color.LightGreen;
+                
 
                 // them vao du lieu ra 
                  flowLayoutPanel1.Controls.Add(btn);
@@ -96,16 +90,36 @@ namespace QuanLyQuanAn1
         {
             try
             {
-               
+
+           foreach (Control control in flowLayoutPanel1.Controls)
+                {
+                    if (control is Button btn)
+                    {
+                        btn.BackColor = Color.LightGreen; // Màu mặc định
+                    }
+                }
+
+                // Lấy button được nhấp và đổi màu sang hồng
+                Button clickedButton = (Button)sender;
+                if (clickedButton != null)
+                {
+                    clickedButton.BackColor = Color.Pink;
+                }
+
+
+
+
+
                 int tableId = ((sender as Button).Tag as table).ID;
+              //  MessageBox.Show(tableId.ToString());
                 dataGridView1.Tag = (sender as Button).Tag;
 
                 string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+tableId + "'and Bill.gio IS NULL ; \r\n";
                 
                 DataTable table = ketNoi.dsquanan(query);
-
+                dataGridView1.DataSource = table;
                 // neu co mon moi hien thi . 
-                if (table != null && table.Rows.Count > 0)
+             /*   if (table != null && table.Rows.Count > 0)
                 {
                     dataGridView1.DataSource = table;
 
@@ -113,7 +127,7 @@ namespace QuanLyQuanAn1
                 else
                 {
                     MessageBox.Show("Không có món ăn cho bàn này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                }*/
             }
             catch(Exception ex){
   
@@ -167,6 +181,7 @@ namespace QuanLyQuanAn1
 
         }
 
+      
         private void btnThanhtoan_Click(object sender, EventArgs e)
         {
 
@@ -180,20 +195,25 @@ namespace QuanLyQuanAn1
             }
              
          int  idBill = insertBill.GetCurrentBillId(table.ID);
-            MessageBox.Show($"Hóa đơn ID: {idBill}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+         //   MessageBox.Show($"Hóa đơn ID: {idBill}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Mở form xuất hóa đơn
             xuathoadon f = new xuathoadon();
      
             f.cblayban.Text = "Bàn " + table.ID.ToString(); // Gán đúng ID bàn
-         
             f.ShowDialog();
             
-            string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.gio IS NULL ; \r\n";
+            string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+table.ID+ "' and Bill.gio IS NULL ; \r\n";
 
           DataTable dt =  ketNoi.dsquanan(query);
             dataGridView1.DataSource = dt;
-            insertBill.InsertBill(table.ID);
+            if (xuathoadon.ktratt == true)
+            {
+                insertBill.InsertBill(table.ID);
+                xuathoadon.ktratt = false;
+            }
+            
+            
         }
         
 
@@ -217,11 +237,11 @@ namespace QuanLyQuanAn1
             // lay ra nhu .
             table table = dataGridView1.Tag as table;
 
-            /*   ketnoi ketNoi = new ketnoi();
-               insertBill insertBill = new insertBill();
-               insertFood insertFood = new insertFood();
-               insertBillInfo insertBillInfo = new insertBillInfo(); 
-            */
+           if(table == null)
+            {
+                MessageBox.Show("vui lòng chọn bàn để thêm");
+                return;
+            }
         
          
             // goi ham insert bill .
@@ -236,9 +256,9 @@ namespace QuanLyQuanAn1
                 */
                 // Lấy ID hóa đơn hiện tại của bàn (tạo mới nếu chưa có)
                 int idBill = insertBill.GetCurrentBillId(table.ID);
-                MessageBox.Show(idBill.ToString());
+              //  MessageBox.Show(idBill.ToString());
                 int idFood = insertFood.getIdFood(cmbmon.SelectedItem.ToString());
-
+                
                 if (idFood != -1)
                 {
                     // goi ham inerBillInfo .  
@@ -253,7 +273,7 @@ namespace QuanLyQuanAn1
             catch(Exception ex) {
                 MessageBox.Show(ex.Message);
             }
-
+          //  MessageBox.Show(table.ID.ToString());
             // load lai du lieu bang . 
              string query = "SELECT \r\n Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' and Bill.gio IS NULL ; \r\n";
             DataTable loadData = ketNoi.dsquanan(query);
@@ -298,7 +318,8 @@ namespace QuanLyQuanAn1
         
         private void frmtable_Load(object sender, EventArgs e)
         {
-            label2.BackColor = Color.Transparent;
+            
+           label2.BackColor = Color.Transparent;
             LoadTable();
         
           
@@ -377,7 +398,23 @@ namespace QuanLyQuanAn1
         private void qunalikhoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             quanlihd f = new quanlihd();
-            f.Show();
+            DataTable dt = ketNoi.dsquanan("select * from Tablefood");
+            f.comboBox1.DataSource = dt;
+            f.comboBox1.DisplayMember = "name";
+            f.comboBox1.ValueMember = "id";
+            this.Hide();
+         f.ShowDialog();
+            this.Show();
+
+        }
+        private void doimau(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void roimau(object sender, EventArgs e)
+        {
+            
         }
     }
 }

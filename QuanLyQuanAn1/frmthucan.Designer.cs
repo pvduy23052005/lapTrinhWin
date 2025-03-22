@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmthucan));
             this.button2 = new System.Windows.Forms.Button();
             this.btdong = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -251,7 +252,7 @@
             this.tbgia.Location = new System.Drawing.Point(129, 208);
             this.tbgia.Name = "tbgia";
             this.tbgia.Size = new System.Drawing.Size(212, 34);
-            this.tbgia.TabIndex = 6;
+            this.tbgia.TabIndex = 0;
             // 
             // tbid
             // 
@@ -274,7 +275,7 @@
             // 
             this.cbdanhmuc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbdanhmuc.FormattingEnabled = true;
-            this.cbdanhmuc.Location = new System.Drawing.Point(129, 303);
+            this.cbdanhmuc.Location = new System.Drawing.Point(129, 296);
             this.cbdanhmuc.Name = "cbdanhmuc";
             this.cbdanhmuc.Size = new System.Drawing.Size(212, 37);
             this.cbdanhmuc.TabIndex = 7;
@@ -329,7 +330,7 @@
             this.cbtimfood.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbtimfood.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbtimfood.FormattingEnabled = true;
-            this.cbtimfood.Location = new System.Drawing.Point(276, 25);
+            this.cbtimfood.Location = new System.Drawing.Point(276, 26);
             this.cbtimfood.Name = "cbtimfood";
             this.cbtimfood.Size = new System.Drawing.Size(406, 39);
             this.cbtimfood.TabIndex = 1;
@@ -423,8 +424,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 569);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmthucan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thực đơn";
             this.Load += new System.EventHandler(this.frmthucan_Load);
             this.tableLayoutPanel5.ResumeLayout(false);

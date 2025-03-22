@@ -51,8 +51,8 @@ drop table FoodCategory
 drop table Tablefood
 
 
-INSERT INTO Tablefood (name, status) VALUES (N'Bàn 1', N'Trống');
-INSERT INTO Tablefood (name, status) VALUES (N'Bàn 2', N'Có người');
+INSERT INTO Tablefood (name, status) VALUES (N'Bàn 3', N'Trống');
+INSERT INTO Tablefood (name, status) VALUES (N'Bàn 4', N'Có người');
 
 
 INSERT INTO FoodCategory (name) VALUES (N'Đồ ăn');

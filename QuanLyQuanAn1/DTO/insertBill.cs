@@ -13,22 +13,20 @@ namespace QuanLyQuanAn1.DTO
     {
 
         ketnoi ketNoi = new ketnoi();
-
+    
         public void InsertBill(int tableId)
          {
              try
              {
+             
 
-                 // Lấy ID của bàn từ đối tượng tabe ;
-                 ketnoi ketNoi = new ketnoi();
-
-                 // Câu truy vấn SQL với tham số hóa để tránh SQL Injection
-                 string query = "INSERT INTO Bill (DateCheckIn, gio, idTable, status) " +
-                                 "VALUES (GETDATE(), NULL, '" + tableId + "', 0)";
-
-                 // tao 1 ban ghi moi . 
-                 ketNoi.dsupdate(query);
-
+                    // Câu truy vấn SQL với tham số hóa để tránh SQL Injection
+                    string query = "INSERT INTO Bill (DateCheckIn, gio, idTable, status) " +
+                                    "VALUES (GETDATE(), NULL, '" + tableId + "', 0)";
+                    
+                    // tao 1 ban ghi moi . 
+                    ketNoi.dsupdate(query);
+           
              }
              catch (Exception ex)
              {
@@ -39,7 +37,7 @@ namespace QuanLyQuanAn1.DTO
         {
             try
             {
-                ketnoi ketNoi = new ketnoi();
+               
                 string query = "SELECT id FROM Bill WHERE idTable = '" + tableId + "' AND status = 0";
 
                 DataTable data = ketNoi.dsquanan(query);
@@ -67,7 +65,7 @@ namespace QuanLyQuanAn1.DTO
         {
 
             string query = "SELECT MAX(id) FROM Bill;";
-            ketnoi ketNoi = new ketnoi();
+         
 
             DataTable data = ketNoi.dsquanan(query);
 
