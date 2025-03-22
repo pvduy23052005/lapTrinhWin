@@ -275,7 +275,7 @@
             // 
             this.cbdanhmuc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbdanhmuc.FormattingEnabled = true;
-            this.cbdanhmuc.Location = new System.Drawing.Point(129, 296);
+            this.cbdanhmuc.Location = new System.Drawing.Point(129, 303);
             this.cbdanhmuc.Name = "cbdanhmuc";
             this.cbdanhmuc.Size = new System.Drawing.Size(212, 37);
             this.cbdanhmuc.TabIndex = 7;
@@ -330,7 +330,7 @@
             this.cbtimfood.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbtimfood.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbtimfood.FormattingEnabled = true;
-            this.cbtimfood.Location = new System.Drawing.Point(276, 26);
+            this.cbtimfood.Location = new System.Drawing.Point(276, 25);
             this.cbtimfood.Name = "cbtimfood";
             this.cbtimfood.Size = new System.Drawing.Size(406, 39);
             this.cbtimfood.TabIndex = 1;

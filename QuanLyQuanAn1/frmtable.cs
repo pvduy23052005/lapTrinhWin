@@ -229,6 +229,29 @@ namespace QuanLyQuanAn1
         {
 
         }
+        void CapNhatKho()
+        {
+            string Mon = cmbmon.Text;
+            int idFood = FoodDAO.Instance.GetIDFood(Mon);
+            int soLuong = 1;
+
+            // Sửa điều kiện kiểm tra kho
+            if (!FoodDAO.Instance.KiemTraKho(idFood, soLuong))
+            {
+                MessageBox.Show("Không đủ nguyên liệu trong kho!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            bool result = FoodDAO.Instance.CapNhatKho(idFood, soLuong);
+            if (result)
+            {
+                MessageBox.Show("Cập nhật kho thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Lỗi khi cập nhật kho!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
         // btn them mon cho ban an . 
@@ -261,8 +284,19 @@ namespace QuanLyQuanAn1
                 
                 if (idFood != -1)
                 {
-                    // goi ham inerBillInfo .  
-                    insertBillInfo.InsertBillInfo(idBill, idFood, 2);
+                    // goi ham inerBillInfo .
+                    if(!FoodDAO.Instance.KiemTraKho(idFood , 1))
+                    {
+                        MessageBox.Show("Không đủ nguyên liệu trong kho!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        cmbloai.Text = "";
+                        cmbmon.Text = "";
+                        return;
+                    }
+                    insertBillInfo.InsertBillInfo(idBill, idFood, 1);
+                    CapNhatKho();
+                    //frmkho frm = (frmkho)this.Owner;
+                    //frm.LoadData();
+
                 }
                 else
                 {
@@ -270,6 +304,7 @@ namespace QuanLyQuanAn1
                 }
 
             }
+            
             catch(Exception ex) {
                 MessageBox.Show(ex.Message);
             }
@@ -387,7 +422,8 @@ namespace QuanLyQuanAn1
         private void khoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmkho frmkho = new frmkho();
-            frmkho.Show();
+            
+            frmkho.ShowDialog();
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)

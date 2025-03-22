@@ -19,21 +19,62 @@ namespace QuanLyQuanAn1
             InitializeComponent();
         }
 
-        private void btnNhapKho_Click(object sender, EventArgs e)
+        
+        public void LoadData()
+        {
+            string query = "SELECT id, tenNguyenLieu, soLuong, donViTinh, giaNhap, ngayNhap FROM KhoNguyenLieu";
+            DataKho.DataSource = DataProvider.Singleton.ExeCuteQuery(query);
+           
+        }
+
+        private void frmkho_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void btnXoaKhoNguyenLieu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DataKho.SelectedRows.Count > 0)
+                {
+                    int id = int.Parse(txtIDNguyenLieu.Text);
+                    XuatKhoDAO.Instance.XoaKho(id);
+                    NhapKhoDAO.Instance.XoaKho(id);
+                    string delete = "delete from KhoNguyenLieu where id = @id  ";
+                    DataProvider.Singleton.ExeCuteNon(delete, new object[] { id });
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn hàng để xóa");
+                }
+            }
+            catch (Exception ex)
+            {
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        
+
+        private void btnTimKiemKho_Click(object sender, EventArgs e)
+        {
+            string timkiem = txtTimKiemKho.Text;
+            string query = "select *from KhoNguyenLieu where tenNguyenLieu like @tenguyenlieu ";
+            DataKho.DataSource = DataProvider.Singleton.ExeCuteQuery(query, new object[] { "%" + timkiem + "%" });
+        }
+
+        private void btnNhapKho_Click_1(object sender, EventArgs e)
         {
             NhapKho frm = new NhapKho();
             frm.Owner = this;
             frm.ShowDialog();
         }
 
-        private void btnXuatKho_Click(object sender, EventArgs e)
-        {
-            XuatKho xuatKho = new XuatKho();
-            xuatKho.Owner = this;
-            xuatKho.ShowDialog();
-        }
-
-        private void btnThemKhoNguyenLieu_Click(object sender, EventArgs e)
+        private void btnThemKhoNguyenLieu_Click_1(object sender, EventArgs e)
         {
             int check = 1;
             int id;
@@ -96,45 +137,16 @@ namespace QuanLyQuanAn1
                 MessageBox.Show(ex.Message);
             }
         }
-        public void LoadData()
+
+        private void btnXuatKho_Click_1(object sender, EventArgs e)
         {
-            string query = "SELECT id, tenNguyenLieu, soLuong, donViTinh, giaNhap, ngayNhap FROM KhoNguyenLieu";
-            DataKho.DataSource = DataProvider.Singleton.ExeCuteQuery(query);
-           
+
+            XuatKho xuatKho = new XuatKho();
+            xuatKho.Owner = this;
+            xuatKho.ShowDialog();
         }
 
-        private void frmkho_Load(object sender, EventArgs e)
-        {
-            LoadData();
-        }
-
-        private void btnXoaKhoNguyenLieu_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DataKho.SelectedRows.Count > 0)
-                {
-                    int id = int.Parse(txtIDNguyenLieu.Text);
-                    XuatKhoDAO.Instance.XoaKho(id);
-                    NhapKhoDAO.Instance.XoaKho(id);
-                    string delete = "delete from KhoNguyenLieu where id = @id  ";
-                    DataProvider.Singleton.ExeCuteNon(delete, new object[] { id });
-                    LoadData();
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chọn hàng để xóa");
-                }
-            }
-            catch (Exception ex)
-            {
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-        private void DataKho_SelectionChanged(object sender, EventArgs e)
+        private void DataKho_SelectionChanged_1(object sender, EventArgs e)
         {
             if (DataKho.SelectedRows.Count > 0)
             {
@@ -146,13 +158,6 @@ namespace QuanLyQuanAn1
                 txtGiaNhap.Text = row.Cells[4].Value.ToString();
                 DateNgayNhap.Text = row.Cells[5].Value.ToString();
             }
-        }
-
-        private void btnTimKiemKho_Click(object sender, EventArgs e)
-        {
-            string timkiem = txtTimKiemKho.Text;
-            string query = "select *from KhoNguyenLieu where tenNguyenLieu like @tenguyenlieu ";
-            DataKho.DataSource = DataProvider.Singleton.ExeCuteQuery(query, new object[] { "%" + timkiem + "%" });
         }
     }
 }

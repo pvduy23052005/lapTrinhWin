@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="DAO\Account.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\FoodDAO.cs" />
     <Compile Include="DAO\NhapKhoDAO.cs" />
     <Compile Include="DAO\tableDAO.cs" />
     <Compile Include="DAO\XuatKhoDAO.cs" />

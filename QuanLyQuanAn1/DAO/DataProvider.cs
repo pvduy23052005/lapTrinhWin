@@ -30,14 +30,14 @@ namespace QuanLyQuanAn1.DAO
         // private string connectionString = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True";
 
         // Sql cua Duong.  
-        private string hung = "Data Source=LAPTOP-JOKOO9J7\\SQLEXPRESS;Initial Catalog=csdltest;Integrated Security=True;";
-       // private string connectionString = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=Duong;Integrated Security=True";
+        //private string hung = "Data Source=LAPTOP-JOKOO9J7\\SQLEXPRESS;Initial Catalog=csdltest;Integrated Security=True;";
+       private string connectionString = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuong;Integrated Security=True";
         public DataTable ExeCuteQuery(string query , object[] parameter = null)
         {
             DataTable datatable = new DataTable();
-            using (SqlConnection connection = new SqlConnection(hung))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+               connection.Open();
                 //string query = "select *from Account";
                 SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -66,7 +66,7 @@ namespace QuanLyQuanAn1.DAO
         public int ExeCuteNon(string query, object[] parameter = null)
         {
             int data = 0;// trả  ra số dòng thành công
-            using (SqlConnection connection = new SqlConnection(hung))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 
                 connection.Open();
@@ -98,7 +98,7 @@ namespace QuanLyQuanAn1.DAO
         public object ExeCuteS(string query, object[] parameter = null)
         {
             object data = 0;// trả  ra số dòng thành công
-            using (SqlConnection connection = new SqlConnection(hung))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
                 connection.Open();
