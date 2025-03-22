@@ -23,6 +23,7 @@ namespace QuanLyQuanAn1.DTO
 
                 DataTable idFood = ketnoi.dsquanan(query);
 
+
                 return Convert.ToInt32(idFood.Rows[0][0]);
             }
             catch (Exception ex)

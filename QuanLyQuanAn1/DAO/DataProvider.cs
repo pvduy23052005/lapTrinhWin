@@ -27,10 +27,10 @@ namespace QuanLyQuanAn1.DAO
 
 
         // sql Cua Duy 
-       // private string connectionString = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True";
+        private string connectionString = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True";
 
         // Sql cua Duong.  
-        private string connectionString = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=Duong;Integrated Security=True";
+        //private string connectionString = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=Duong;Integrated Security=True";
         public DataTable ExeCuteQuery(string query , object[] parameter = null)
         {
             DataTable datatable = new DataTable();

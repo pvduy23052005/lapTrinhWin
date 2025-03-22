@@ -3,26 +3,24 @@
 
 
 -- them  de thuc hien Bill 
-select *from  Bill
-select *from BillInfo
-select *from Food  
-select *from FoodCetagory
+
+
 
 
 -- thêm vào FoodCetagory . 
-INSERT INTO FoodCetagory(name) 
+INSERT INTO FoodCategory(name) 
 VALUES (N'Hải sản');
 
-INSERT INTO FoodCetagory(name) 
+INSERT INTO FoodCategory(name) 
 VALUES (N'Nông sản');
 
-INSERT INTO FoodCetagory(name) 
+INSERT INTO FoodCategory(name) 
 VALUES (N'Nước');
 
-INSERT INTO FoodCetagory(name) 
+INSERT INTO FoodCategory(name) 
 VALUES (N'Ăn vặt');
 
-INSERT INTO FoodCetagory(name) 
+INSERT INTO FoodCategory(name) 
 VALUES (N'Món tráng miệng');
 
 
@@ -58,11 +56,11 @@ INSERT INTO Food (name, idCategory, price)
 VALUES (N'chè ba màu', 5, 45);
 
 
-select * from Food , FoodCetagory 
+select * from Food , FoodCategory 
 where 2 =  Food.idCategory
 
 insert into Bill( DateCheckIn , DateCheckout , idTable , status )
-values(GETDATE , null , 2 , N'chưa thanh toán ')
+values(GETDATE() , null , 2 , N'chưa thanh toán ')
 
 
 
@@ -78,12 +76,13 @@ VALUES
 
 select *from Bill 
 INSERT INTO Bill (DateCheckIn, DateCheckout, idTable, status)
-VALUES 
+VALUES [dbo].[Bill]
   (GETDATE(), NULL, 2,1),
   (GETDATE(), NULL, 3,0),
   (GETDATE(), NULL, 4,0),
   (GETDATE(), NULL, 5,1),
   (GETDATE(), NULL, 6,0);
+
 
 //  chen du lieu vao bang .
 INSERT INTO BillInfo (idBill, idFood, count)
@@ -95,4 +94,8 @@ VALUES
   (3, 2, 2);  -- Hóa đơn 3, Món ăn 2, Số lượng 2
 
 
+  select * from BillInfo where idBill = 15  and idFood = 6
 
+  select * from Food 
+  select *from Bill 
+  select *from BillInfo
