@@ -66,12 +66,7 @@ namespace QuanLyQuanAn1.DAO
             string query = "INSERT INTO XuatKho (idNguyenLieu, soLuongXuat, ngayxuat, ghichu) VALUES ( @idNguyenLieu , @soLuongxuat , @ngayxuat , @ghichu )";
             DataProvider.Singleton.ExeCuteNon(query, new object[] { idNguyenLieu, soLuongxuat, ngayxuat, ghichu });
         }
-        public void UpdateXuatKho(string TenNl, float soluongxuat)
-        {
-            int idNguyenLieu = GetNguyenLieuId(TenNl);
-            string query = "update  xuatkho set soluongxuat = @soluongxuat where idnguyenlieu = @idnguyenlieu ";
-            DataProvider.Singleton.ExeCuteNon(query, new object[] { idNguyenLieu, soluongxuat });
-        }
+       
         public void XuatKho(string TenNl, float SoLuongXuat, string ngayxuat, string ghichu)
         {
             try

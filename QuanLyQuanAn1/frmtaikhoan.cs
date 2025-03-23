@@ -211,7 +211,7 @@ namespace QuanLyQuanAn1
             try
             {
                 string query = "UPDATE Account SET Displayname = @displayname , PassWord = @password , Type = @type , trangthai = @trangthai WHERE Username = @user ";
-                int kt = DataProvider.Singleton.ExeCuteNon(query, new object[] { tenhienthi, matkhau, loai, tendangnhap, trangthai });
+                int kt = DataProvider.Singleton.ExeCuteNon(query, new object[] { tenhienthi, matkhau, loai,  trangthai  , tendangnhap});
 
                 if (kt == 0)
                 {
@@ -295,6 +295,11 @@ namespace QuanLyQuanAn1
             string timkiem = txttimkiem.Text;
             string query = "select *from Account where username like @tendangnhap ";
             dataAccount.DataSource = DataProvider.Singleton.ExeCuteQuery(query , new object[] { "%" + timkiem + "%"  });
+        }
+
+        private void btndong_Click_1(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

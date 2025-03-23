@@ -43,6 +43,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.txttimkiem = new System.Windows.Forms.TextBox();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -63,7 +64,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnTimKiem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -151,6 +151,7 @@
             this.btndong.TabIndex = 3;
             this.btndong.Text = "Đóng";
             this.btndong.UseVisualStyleBackColor = false;
+            this.btndong.Click += new System.EventHandler(this.btndong_Click_1);
             // 
             // splitContainer1
             // 
@@ -240,7 +241,7 @@
             this.label1.Location = new System.Drawing.Point(4, 20);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 42);
+            this.label1.Size = new System.Drawing.Size(145, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tìm kiếm:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -248,11 +249,22 @@
             // txttimkiem
             // 
             this.txttimkiem.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txttimkiem.Location = new System.Drawing.Point(158, 30);
+            this.txttimkiem.Location = new System.Drawing.Point(157, 30);
             this.txttimkiem.Margin = new System.Windows.Forms.Padding(4);
             this.txttimkiem.Name = "txttimkiem";
             this.txttimkiem.Size = new System.Drawing.Size(242, 22);
             this.txttimkiem.TabIndex = 1;
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnTimKiem.Location = new System.Drawing.Point(406, 23);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(89, 36);
+            this.btnTimKiem.TabIndex = 2;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // groupBox2
             // 
@@ -513,17 +525,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnTimKiem.Location = new System.Drawing.Point(407, 23);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(89, 36);
-            this.btnTimKiem.TabIndex = 2;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = false;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // frmtaikhoan
             // 

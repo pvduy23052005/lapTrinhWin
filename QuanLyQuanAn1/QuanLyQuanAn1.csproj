@@ -69,18 +69,6 @@
     <Compile Include="frmdangky.Designer.cs">
       <DependentUpon>frmdangky.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmdanhmuc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmdanhmuc.Designer.cs">
-      <DependentUpon>frmdanhmuc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmdoanhthu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmdoanhthu.Designer.cs">
-      <DependentUpon>frmdoanhthu.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmkho.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,12 +131,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmdangky.resx">
       <DependentUpon>frmdangky.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmdanhmuc.resx">
-      <DependentUpon>frmdanhmuc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmdoanhthu.resx">
-      <DependentUpon>frmdoanhthu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmkho.resx">
       <DependentUpon>frmkho.cs</DependentUpon>

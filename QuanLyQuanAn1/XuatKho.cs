@@ -50,7 +50,7 @@ namespace QuanLyQuanAn1
                 MessageBox.Show("Vui lòng chọn số lượng xuất hợp lệ");
                 return;
             }
-            XuatKhoDAO.Instance.UpdateKhoNguyenLieu(TenNl, SoluongXuat);
+           
             XuatKhoDAO.Instance.XuatKho(TenNl, SoluongXuat, ngayxuat, ghichu);
             LoadXuatKho();
             frmkho frm = (frmkho)this.Owner;

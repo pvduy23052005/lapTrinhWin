@@ -137,8 +137,6 @@ namespace QuanLyQuanAn1
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmdoanhthu frmdoanhthu = new frmdoanhthu();
-            frmdoanhthu.Show() ;
         }
 
         private void thứcĂnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -164,8 +162,7 @@ namespace QuanLyQuanAn1
         void loadTable() { }
         private void doanhMụcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmdanhmuc frmdanhmuc = new frmdanhmuc();
-            frmdanhmuc.Show();
+            
         }
 
         private void lsvthucdon_SelectedIndexChanged(object sender, EventArgs e)
@@ -230,7 +227,7 @@ namespace QuanLyQuanAn1
             int soLuong = (int)soLuongMon.Value;
             int khoiluongthucan = GetSoLuongCanChoMon(idFood) * soLuong;
             Console.WriteLine(khoiluongthucan);
-            // Sửa điều kiện kiểm tra kho
+            
             if (!FoodDAO.Instance.KiemTraKho(idFood, khoiluongthucan))
             {
                 MessageBox.Show("Không đủ nguyên liệu trong kho!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -481,8 +478,7 @@ namespace QuanLyQuanAn1
             int idFood = GetIDNguyenLieu(Convert.ToInt32(layid));
             float soluong = (float)Math.Round(GetCountFoodBIllInfo(Convert.ToInt32(layid)) * GetSoLuongCan(Convert.ToInt32(layid)), 2);
 
-            Console.WriteLine(idFood);
-            Console.WriteLine(soluong);
+            
             NhapKhoDAO.Instance.UpdateKhoNguyenLieu(idFood, soluong);
             ketNoi.dsupdate("delete from BillInfo where BillInfo.id = '" + Convert.ToInt32(layid) + "'");
             // load lai du lieu bang . 
