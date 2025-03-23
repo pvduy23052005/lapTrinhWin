@@ -28,9 +28,11 @@ namespace QuanLyQuanAn1.DAO
         public List<table> LoadTableList()
         {
             List<table> tableList = new List<table>();
-           // string hung = "Data Source=LAPTOP-JOKOO9J7\\SQLEXPRESS;Initial Catalog=csdltest;Integrated Security=True;";
-          string connectionString = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuong;Integrated Security=True";
+            // string hung = "Data Source=LAPTOP-JOKOO9J7\\SQLEXPRESS;Initial Catalog=csdltest;Integrated Security=True;";
+            //string connectionString = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuong;Integrated Security=True";
+            string connectionString = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=LeQuyDuong;Integrated Security=True";
 
+            //string connectionString = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True";
             // ham doi . 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

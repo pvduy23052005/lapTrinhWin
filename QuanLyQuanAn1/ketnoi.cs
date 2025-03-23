@@ -15,12 +15,13 @@ namespace QuanLyQuanAn1
 
         public DataTable dsquanan(string sql)
         {
-
             try
             {
 
-                string hung = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuong;Integrated Security=True";
-               // string t = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=Duong;Integrated Security=True";
+                string hung = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=LeQuyDuong;Integrated Security=True";
+
+                // string hung = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuong;Integrated Security=True";
+                // string t = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=Duong;Integrated Security=True";
 
                 // string t = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLyQuanAn;Integrated Security=True";
                 SqlConnection con = new SqlConnection(hung);
@@ -43,7 +44,12 @@ namespace QuanLyQuanAn1
         {
             try
             {
-                string hung = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuong;Integrated Security=True";
+                // string hung = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True";
+
+                string hung = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=LeQuyDuong;Integrated Security=True";
+
+
+                //string hung = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuong;Integrated Security=True";
                 SqlConnection con = new SqlConnection(hung);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
@@ -54,7 +60,7 @@ namespace QuanLyQuanAn1
                 }
                 else
                 {
-                    MessageBox.Show("Đéo thành công");
+                    MessageBox.Show("thành công");
                 }
                     con.Close();
                

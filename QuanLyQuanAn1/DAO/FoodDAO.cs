@@ -35,7 +35,7 @@ namespace QuanLyQuanAn1.DAO
                 JOIN FoodIngredient fi ON k.id = fi.idNguyenLieu
                 WHERE fi.idFood = @idFood ";
 
-                object result = DataProvider.Singleton.ExeCuteS(query, new object[] { idFood, soLuongDat });
+                object result = DataProvider.Singleton.ExeCuteS(query, new object[] { soLuongDat, idFood });
 
                 // Kiểm tra nếu kết quả null hoặc nhỏ hơn 0
                 if (result == null || Convert.ToInt32(result) < 0)
@@ -66,7 +66,7 @@ namespace QuanLyQuanAn1.DAO
                         WHERE fi.idFood = @idFood ";
 
 
-                DataProvider.Singleton.ExeCuteNon(query , new object[] {idFood, soLuongDat});
+                DataProvider.Singleton.ExeCuteNon(query , new object[] {soLuongDat, idFood});
                   return true;
                     
                 }
