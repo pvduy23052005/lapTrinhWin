@@ -289,5 +289,12 @@ namespace QuanLyQuanAn1
                 txttrangthai.Text = row.Cells[4].Value.ToString();
             }
         }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string timkiem = txttimkiem.Text;
+            string query = "select *from Account where username like @tendangnhap ";
+            dataAccount.DataSource = DataProvider.Singleton.ExeCuteQuery(query , new object[] { "%" + timkiem + "%"  });
+        }
     }
 }

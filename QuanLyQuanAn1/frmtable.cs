@@ -199,7 +199,7 @@ namespace QuanLyQuanAn1
             f.cblayban.Text =  "Bàn " + table.ID.ToString(); // Gán đúng ID bàn = so bàn 
             f.ShowDialog();
             
-            string query = "SELECT \r\n .name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+table.ID+ "' and Bill.gio IS NULL ; \r\n";
+            string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+table.ID+ "' and Bill.gio IS NULL ; \r\n";
 
           DataTable dt =  ketNoi.dsquanan(query);
             dataGridView1.DataSource = dt;
@@ -226,26 +226,29 @@ namespace QuanLyQuanAn1
         {
             string Mon = cmbmon.Text;
             int idFood = FoodDAO.Instance.GetIDFood(Mon);
-            int soLuong = 1;
-
+            int soLuong = (int)soLuongMon.Value;
+            int khoiluongthucan = GetSoLuongCanChoMon(idFood) * soLuong;
+            Console.WriteLine(khoiluongthucan);
             // Sửa điều kiện kiểm tra kho
-            if (!FoodDAO.Instance.KiemTraKho(idFood, soLuong))
+            if (!FoodDAO.Instance.KiemTraKho(idFood, khoiluongthucan))
             {
                 MessageBox.Show("Không đủ nguyên liệu trong kho!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             bool result = FoodDAO.Instance.CapNhatKho(idFood, soLuong);
-            if (result)
-            {
-                MessageBox.Show("Cập nhật kho thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Lỗi khi cập nhật kho!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            XuatKhoDAO.Instance.InsertXuatKho(idFood, khoiluongthucan, DateTime.Now.ToString(), "Dùng để  cho " + Mon + " Ngày " + DateTime.Now.ToString() + " ");
         }
-
+        public int GetSoLuongCanChoMon(int IdFood)
+        {
+            string query = "select soluongcan from FoodIngredient where idNguyenLieu = @idnguyenlieu ";
+            object result = DataProvider.Singleton.ExeCuteS(query, new object[] { IdFood });
+            if (result == null)
+            {
+                return -1;
+            }
+            return Convert.ToInt32(result);
+        }
 
         // btn them mon cho ban an . 
         private void btnthem_Click(object sender, EventArgs e)
@@ -281,7 +284,7 @@ namespace QuanLyQuanAn1
                 {
 
 
-                    if (!FoodDAO.Instance.KiemTraKho(idFood, so_luong_mon)) ;
+                    if (!FoodDAO.Instance.KiemTraKho(idFood , so_luong_mon))
                     {
                         MessageBox.Show("Không đủ nguyên liệu trong kho!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         cmbloai.Text = "";

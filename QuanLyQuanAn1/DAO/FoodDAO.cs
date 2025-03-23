@@ -29,11 +29,7 @@ namespace QuanLyQuanAn1.DAO
         {
             try
             {
-                string query = @"
-                SELECT MIN(k.soLuong - (fi.soLuongCan * @soLuongDat ))
-                FROM KhoNguyenLieu k
-                JOIN FoodIngredient fi ON k.id = fi.idNguyenLieu
-                WHERE fi.idFood = @idFood ";
+                string query = @"SELECT MIN(KhoNguyenLieu.soLuong - (FoodIngredient.soLuongCan * @soLuongDat )) FROM KhoNguyenLieu  JOIN FoodIngredient ON KhoNguyenLieu.id = FoodIngredient.idNguyenLieu  WHERE FoodIngredient.idFood = @idFood ";
 
                 object result = DataProvider.Singleton.ExeCuteS(query, new object[] { soLuongDat, idFood });
 
@@ -58,12 +54,8 @@ namespace QuanLyQuanAn1.DAO
                 try
                 {
 
-                string query = @"
-                        UPDATE k
-                        SET k.soLuong = k.soLuong - CAST(fi.soLuongCan AS FLOAT) * @soLuongDat 
-                        FROM KhoNguyenLieu k
-                        JOIN FoodIngredient fi ON k.id = fi.idNguyenLieu
-                        WHERE fi.idFood = @idFood ";
+                string query = @"UPDATE KhoNguyenLieu SET soLuong = soLuong - CAST(FoodIngredient.soLuongCan AS FLOAT) * @soLuongDat FROM KhoNguyenLieu JOIN FoodIngredient ON KhoNguyenLieu.id = FoodIngredient.idNguyenLieu
+                    WHERE FoodIngredient.idFood = @idFood ";
 
 
                 DataProvider.Singleton.ExeCuteNon(query , new object[] {soLuongDat, idFood});

@@ -159,5 +159,12 @@ namespace QuanLyQuanAn1
                 DateNgayNhap.Text = row.Cells[5].Value.ToString();
             }
         }
+
+        private void btnTimKiemKho_Click_1(object sender, EventArgs e)
+        {
+            string timkiem = txtTimKiemKho.Text;
+            string query = "select *from khoNguyenLieu where tennguyenlieu like @ten ";
+            DataKho.DataSource = DataProvider.Singleton.ExeCuteQuery(query , new object[] {"%" + timkiem +"%"});
+        }
     }
 }

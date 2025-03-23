@@ -63,6 +63,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnTimKiem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -80,6 +81,7 @@
             // 
             // btnxoa
             // 
+            this.btnxoa.BackColor = System.Drawing.Color.AliceBlue;
             this.btnxoa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnxoa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnxoa.Location = new System.Drawing.Point(41, 50);
@@ -87,11 +89,12 @@
             this.btnxoa.Size = new System.Drawing.Size(150, 41);
             this.btnxoa.TabIndex = 2;
             this.btnxoa.Text = "Xóa";
-            this.btnxoa.UseVisualStyleBackColor = true;
+            this.btnxoa.UseVisualStyleBackColor = false;
             this.btnxoa.Click += new System.EventHandler(this.btnxoa_Click_1);
             // 
             // btnthem
             // 
+            this.btnthem.BackColor = System.Drawing.Color.AliceBlue;
             this.btnthem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnthem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnthem.Location = new System.Drawing.Point(41, 3);
@@ -99,7 +102,7 @@
             this.btnthem.Size = new System.Drawing.Size(150, 41);
             this.btnthem.TabIndex = 0;
             this.btnthem.Text = "Thêm";
-            this.btnthem.UseVisualStyleBackColor = true;
+            this.btnthem.UseVisualStyleBackColor = false;
             this.btnthem.Click += new System.EventHandler(this.btnthem_Click_1);
             // 
             // Column1
@@ -139,6 +142,7 @@
             // 
             // btndong
             // 
+            this.btndong.BackColor = System.Drawing.Color.AliceBlue;
             this.btndong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btndong.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndong.Location = new System.Drawing.Point(197, 50);
@@ -146,7 +150,7 @@
             this.btndong.Size = new System.Drawing.Size(135, 41);
             this.btndong.TabIndex = 3;
             this.btndong.Text = "Đóng";
-            this.btndong.UseVisualStyleBackColor = true;
+            this.btndong.UseVisualStyleBackColor = false;
             // 
             // splitContainer1
             // 
@@ -185,6 +189,7 @@
             // dataAccount
             // 
             this.dataAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataAccount.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataAccount.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -206,11 +211,14 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.31832F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.68168F));
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.58442F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.42208F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.99351F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.txttimkiem, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnTimKiem, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -232,7 +240,7 @@
             this.label1.Location = new System.Drawing.Point(4, 20);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 42);
+            this.label1.Size = new System.Drawing.Size(146, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tìm kiếm:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -240,15 +248,15 @@
             // txttimkiem
             // 
             this.txttimkiem.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txttimkiem.Location = new System.Drawing.Point(116, 30);
+            this.txttimkiem.Location = new System.Drawing.Point(158, 30);
             this.txttimkiem.Margin = new System.Windows.Forms.Padding(4);
             this.txttimkiem.Name = "txttimkiem";
-            this.txttimkiem.Size = new System.Drawing.Size(264, 22);
+            this.txttimkiem.Size = new System.Drawing.Size(242, 22);
             this.txttimkiem.TabIndex = 1;
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Highlight;
             this.groupBox2.Controls.Add(this.tableLayoutPanel3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -283,7 +291,7 @@
             this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tableLayoutPanel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tableLayoutPanel5.ColumnCount = 4;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.315565F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.47548F));
@@ -304,6 +312,7 @@
             // 
             // btnsua
             // 
+            this.btnsua.BackColor = System.Drawing.Color.AliceBlue;
             this.btnsua.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnsua.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsua.Location = new System.Drawing.Point(197, 3);
@@ -311,18 +320,19 @@
             this.btnsua.Size = new System.Drawing.Size(135, 41);
             this.btnsua.TabIndex = 1;
             this.btnsua.Text = "Sửa";
-            this.btnsua.UseVisualStyleBackColor = true;
+            this.btnsua.UseVisualStyleBackColor = false;
             this.btnsua.Click += new System.EventHandler(this.btnsua_Click_1);
             // 
             // btnduyet
             // 
+            this.btnduyet.BackColor = System.Drawing.Color.AliceBlue;
             this.btnduyet.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnduyet.Location = new System.Drawing.Point(338, 3);
             this.btnduyet.Name = "btnduyet";
             this.btnduyet.Size = new System.Drawing.Size(113, 41);
             this.btnduyet.TabIndex = 4;
             this.btnduyet.Text = "Duyệt";
-            this.btnduyet.UseVisualStyleBackColor = true;
+            this.btnduyet.UseVisualStyleBackColor = false;
             this.btnduyet.Click += new System.EventHandler(this.btnduyet_Click);
             // 
             // tableLayoutPanel4
@@ -330,7 +340,7 @@
             this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.tableLayoutPanel4.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.7921F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.13412F));
@@ -504,6 +514,17 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnTimKiem.Location = new System.Drawing.Point(407, 23);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(89, 36);
+            this.btnTimKiem.TabIndex = 2;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
             // frmtaikhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -569,5 +590,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnTimKiem;
     }
 }
