@@ -325,7 +325,7 @@
             // 
             this.cbTenNguyenLieuXuat.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbTenNguyenLieuXuat.FormattingEnabled = true;
-            this.cbTenNguyenLieuXuat.Location = new System.Drawing.Point(147, 58);
+            this.cbTenNguyenLieuXuat.Location = new System.Drawing.Point(147, 64);
             this.cbTenNguyenLieuXuat.Name = "cbTenNguyenLieuXuat";
             this.cbTenNguyenLieuXuat.Size = new System.Drawing.Size(205, 36);
             this.cbTenNguyenLieuXuat.TabIndex = 13;

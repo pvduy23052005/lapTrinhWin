@@ -466,65 +466,27 @@ namespace QuanLyQuanAn1
         string idBillInfo = "", idTable = "", idBill = "";
 
         // Tinh nang xoa . 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-
-                idBillInfo = row.Cells[0].Value.ToString();
-                idTable = row.Cells[1].Value.ToString();
-                idBill = row.Cells[2].Value.ToString();
-
-
-                textBox1.Text = "idBinfo" + idBillInfo + "  idTable" + idTable + "  idBill" + idBill;
-            }
-
-
-        }
-
-
-
-
-        // xoa món 
+        string layid;
         private void button1_Click(object sender, EventArgs e)
         {
-            if (idBillInfo != "" && idTable != "" && idBill != "")
+            table table = dataGridView1.Tag as table;
+
+            if (table == null)
             {
-
-
-                string deleteBillInfo = "delete from BillInfo where BillInfo.id = '" + idBillInfo + "'";
-
-                string deleteBill = "delete from Bill where Bill.id = '" + idBill + "' ";
-
-
-
-                ketnoi ketNoi = new ketnoi();
-
-                try
-                {
-                    ketNoi.dsupdate(deleteBillInfo);
-                    ketNoi.dsupdate(deleteBill);
-                    MessageBox.Show("Xóa thành công billinfo");
-                }
-                catch
-                {
-                    MessageBox.Show("Xóa không thành công billinfo");
-                }
-
-                ketNoi.dsupdate(deleteBill);
-
-
-
-                // load lai du lieu bang . 
-                string query = "SELECT Billinfo.id , Tablefood.id , Bill.id, \r\n Food.name , \r\n    Food.price , \r\n   BillInfo.count ,Food.price * BillInfo.count as [Tổng tiền]  FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + idTable + " '";
-                DataTable loadData = ketNoi.dsquanan(query);
-                dataGridView1.DataSource = loadData;
+                MessageBox.Show("vui lòng chọn bàn để thêm");
+                return;
             }
-            else
-            {
-                MessageBox.Show("BẠN CHƯA CHỌN MÓN !");
-            }
+            ketNoi.dsupdate("delete from BillInfo where BillInfo.id = '" + Convert.ToInt32(layid) + "'");
+            // load lai du lieu bang . 
+            string query = "SELECT BillInfo.id ,\r\n Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' and Bill.gio IS NULL ; \r\n";
+            DataTable loadData = ketNoi.dsquanan(query);
+            dataGridView1.DataSource = loadData;
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            layid = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+
         }
     }
 }

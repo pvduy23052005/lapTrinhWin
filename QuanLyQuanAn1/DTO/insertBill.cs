@@ -42,16 +42,9 @@ namespace QuanLyQuanAn1.DTO
 
                 DataTable data = ketNoi.dsquanan(query);
 
-                if (data.Rows.Count > 0)
-                {
+               
                     return Convert.ToInt32(data.Rows[0][0]); // Lấy ID của bill đang mở
-                }
-                else
-                {
-                    // Nếu không có bill nào đang mở, tạo bill mới
-                    InsertBill(tableId);
-                    return getIdBill(); // Lấy ID của bill vừa tạo
-                }
+                
             }
             catch (Exception ex)
             {
