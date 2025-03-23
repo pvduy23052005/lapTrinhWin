@@ -203,6 +203,7 @@ namespace QuanLyQuanAn1
 
           DataTable dt =  ketNoi.dsquanan(query);
             dataGridView1.DataSource = dt;
+          
             if (xuathoadon.ktratt == true)
             {
                 insertBill.InsertBill(table.ID);
@@ -292,10 +293,10 @@ namespace QuanLyQuanAn1
                         return;
                     }
 
-
+                    CapNhatKho();
                     // goi ham ínertBil
                     insertBillInfo.InsertBillInfo(idBill, idFood, so_luong_mon);
-                    CapNhatKho();
+                    
 
 
                     //frmkho frm = (frmkho)this.Owner;
@@ -317,9 +318,10 @@ namespace QuanLyQuanAn1
 
             //  MessageBox.Show(table.ID.ToString());
             // load lai du lieu bang . 
-            string query = "SELECT \r\n Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' and Bill.gio IS NULL ; \r\n";
+            string query = "SELECT \r\n BillInfo.id ,Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' and Bill.gio IS NULL ; \r\n";
             DataTable loadData = ketNoi.dsquanan(query);
             dataGridView1.DataSource = loadData;
+            dataGridView1.Columns[0].Visible = false;
         }
 
 
@@ -463,7 +465,7 @@ namespace QuanLyQuanAn1
 
         }
 
-        string idBillInfo = "", idTable = "", idBill = "";
+  
 
         // Tinh nang xoa . 
         string layid;
@@ -476,13 +478,58 @@ namespace QuanLyQuanAn1
                 MessageBox.Show("vui lòng chọn bàn để thêm");
                 return;
             }
+            int idFood = GetIDNguyenLieu(Convert.ToInt32(layid));
+            float soluong = (float)Math.Round(GetCountFoodBIllInfo(Convert.ToInt32(layid)) * GetSoLuongCan(Convert.ToInt32(layid)), 2);
+
+            Console.WriteLine(idFood);
+            Console.WriteLine(soluong);
+            NhapKhoDAO.Instance.UpdateKhoNguyenLieu(idFood, soluong);
             ketNoi.dsupdate("delete from BillInfo where BillInfo.id = '" + Convert.ToInt32(layid) + "'");
             // load lai du lieu bang . 
             string query = "SELECT BillInfo.id ,\r\n Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' and Bill.gio IS NULL ; \r\n";
             DataTable loadData = ketNoi.dsquanan(query);
             dataGridView1.DataSource = loadData;
+            dataGridView1.Columns[0].Visible = false;
         }
+        int GetIdFoodBIllInfo(int idbillinfo)
+        {
+            string query = "select idfood from billinfo where id = @id ";
+            object IdFood = DataProvider.Singleton.ExeCuteS(query, new object[] { idbillinfo });
+            if (IdFood == null)
+            {
+                return -1;
+            }
+           
+            return Convert.ToInt32(IdFood);
+        }
+        int GetIDNguyenLieu(int Idbillinfo)
+        {
+            int IdFood = GetIdFoodBIllInfo(Idbillinfo);
+            string query = "select idNguyenLieu from FoodIngredient where idfood = @idfood ";
+            object IdNguyenLieu = DataProvider.Singleton.ExeCuteS(query , new object[] { IdFood });
+            if(IdNguyenLieu == null) { return -1; }
+            return Convert.ToInt32(IdNguyenLieu);
+        }
+        float GetSoLuongCan(int IdBillinfo)
+        {
+            int IdFood = GetIdFoodBIllInfo(IdBillinfo);
+            string query = "select soluongcan from FoodIngredient where idfood = @idfood ";
+            object soluongcan = DataProvider.Singleton.ExeCuteS(query , new object[] {IdFood});
+            if(soluongcan == null) return -1;
+            return Convert.ToSingle(soluongcan);
+        }
+        int GetCountFoodBIllInfo(int idbillinfo)
+        {
+            string query = "select [count] from billinfo where id = @id ";
+            object count = DataProvider.Singleton.ExeCuteS(query, new object[] { idbillinfo });
+            if (count == null)
+            {
+                return -1;
+            }
+            
 
+            return Convert.ToInt32(count);
+        }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             layid = dataGridView1.CurrentRow.Cells[0].Value.ToString();

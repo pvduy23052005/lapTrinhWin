@@ -20,7 +20,7 @@ namespace QuanLyQuanAn1
 
                 //string hung = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=LeQuyDuong;Integrated Security=True";
 
-                string hung = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuong;Integrated Security=True";
+                string hung = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuonggg;Integrated Security=True;";
                 // string t = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=Duong;Integrated Security=True";
 
                 // string t = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLyQuanAn;Integrated Security=True";
@@ -49,7 +49,7 @@ namespace QuanLyQuanAn1
                // string hung = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=LeQuyDuong;Integrated Security=True";
 
 
-                string hung = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuong;Integrated Security=True";
+                string hung = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuonggg;Integrated Security=True;";
                 SqlConnection con = new SqlConnection(hung);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
