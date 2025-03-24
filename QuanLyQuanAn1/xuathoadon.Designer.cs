@@ -193,7 +193,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 38);
             this.button1.TabIndex = 1;
-            this.button1.Text = "xác nhận";
+            this.button1.Text = "Xác nhận";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -207,7 +207,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 38);
             this.button2.TabIndex = 2;
-            this.button2.Text = "đóng";
+            this.button2.Text = "Đóng";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -241,7 +241,7 @@
             this.groupBox1.Size = new System.Drawing.Size(874, 420);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "số lượng sản phẩm";
+            this.groupBox1.Text = "Số lượng sản phẩm";
             // 
             // tableLayoutPanel1
             // 
@@ -441,11 +441,11 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(33, 24);
+            this.label8.Location = new System.Drawing.Point(30, 24);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 20);
+            this.label8.Size = new System.Drawing.Size(84, 20);
             this.label8.TabIndex = 2;
-            this.label8.Text = "trạng thái";
+            this.label8.Text = "Trạng thái";
             // 
             // radioButton2
             // 
@@ -454,11 +454,11 @@
             this.radioButton2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.radioButton2.Enabled = false;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(365, 22);
+            this.radioButton2.Location = new System.Drawing.Point(364, 22);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(149, 24);
+            this.radioButton2.Size = new System.Drawing.Size(152, 24);
             this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "chưa thanh toán";
+            this.radioButton2.Text = "Chưa thanh toán";
             this.radioButton2.UseVisualStyleBackColor = false;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
@@ -469,11 +469,11 @@
             this.radioButton1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.radioButton1.Enabled = false;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(174, 22);
+            this.radioButton1.Location = new System.Drawing.Point(172, 22);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(131, 24);
+            this.radioButton1.Size = new System.Drawing.Size(134, 24);
             this.radioButton1.TabIndex = 0;
-            this.radioButton1.Text = "đã thanh toán";
+            this.radioButton1.Text = "Đã thanh toán";
             this.radioButton1.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel4
@@ -524,7 +524,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "xuathoadon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "xuathoadon";
+            this.Text = "Xuất hóa đơn";
             this.Load += new System.EventHandler(this.xuathoadon_Load);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();

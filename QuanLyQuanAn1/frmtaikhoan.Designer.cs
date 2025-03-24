@@ -111,6 +111,7 @@
             this.Column1.HeaderText = "Tên đăng nhập";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
@@ -118,6 +119,7 @@
             this.Column2.HeaderText = "Tên hiện thị";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
@@ -125,6 +127,7 @@
             this.Column3.HeaderText = "Mật khẩu";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
@@ -132,6 +135,7 @@
             this.Column4.HeaderText = "Loại";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
@@ -139,6 +143,7 @@
             this.Column5.HeaderText = "Trạng thái";
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // btndong
             // 
@@ -202,6 +207,7 @@
             this.dataAccount.Location = new System.Drawing.Point(4, 94);
             this.dataAccount.Margin = new System.Windows.Forms.Padding(4);
             this.dataAccount.Name = "dataAccount";
+            this.dataAccount.ReadOnly = true;
             this.dataAccount.RowHeadersWidth = 51;
             this.dataAccount.RowTemplate.Height = 24;
             this.dataAccount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

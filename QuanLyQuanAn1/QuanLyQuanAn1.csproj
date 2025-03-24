@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\Account.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\FoodDAO.cs" />
     <Compile Include="DAO\NhapKhoDAO.cs" />
@@ -56,13 +55,6 @@
     <Compile Include="DTO\insertBillInfo.cs" />
     <Compile Include="DTO\insertFood.cs" />
     <Compile Include="DTO\table.cs" />
-    <Compile Include="DTO\tableStatus.cs" />
-    <Compile Include="frmaccount.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmaccount.Designer.cs">
-      <DependentUpon>frmaccount.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmdangky.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,9 +118,6 @@
     <Compile Include="XuatKho.Designer.cs">
       <DependentUpon>XuatKho.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmaccount.resx">
-      <DependentUpon>frmaccount.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmdangky.resx">
       <DependentUpon>frmdangky.cs</DependentUpon>
     </EmbeddedResource>

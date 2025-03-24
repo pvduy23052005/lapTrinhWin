@@ -10,6 +10,7 @@ namespace QuanLyQuanAn1.DTO
     public class table
     {
 
+        // tao 1 ham khoi tao co tham so . 
         public table(int iD, string name , string status)
         {
             this.ID = iD;

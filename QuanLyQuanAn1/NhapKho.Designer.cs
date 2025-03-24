@@ -80,7 +80,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 450);
+            this.groupBox1.Size = new System.Drawing.Size(832, 499);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nhập kho";
@@ -98,8 +98,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(794, 429);
-            this.splitContainer1.SplitterDistance = 420;
+            this.splitContainer1.Size = new System.Drawing.Size(826, 478);
+            this.splitContainer1.SplitterDistance = 436;
             this.splitContainer1.TabIndex = 0;
             // 
             // dataNhapKho
@@ -118,9 +118,10 @@
             this.dataNhapKho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataNhapKho.Location = new System.Drawing.Point(0, 0);
             this.dataNhapKho.Name = "dataNhapKho";
+            this.dataNhapKho.ReadOnly = true;
             this.dataNhapKho.RowHeadersWidth = 51;
             this.dataNhapKho.RowTemplate.Height = 24;
-            this.dataNhapKho.Size = new System.Drawing.Size(420, 429);
+            this.dataNhapKho.Size = new System.Drawing.Size(436, 478);
             this.dataNhapKho.TabIndex = 0;
             this.dataNhapKho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataNhapKho_CellClick);
             // 
@@ -183,7 +184,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(370, 429);
+            this.groupBox2.Size = new System.Drawing.Size(386, 478);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin nhập kho";
@@ -201,7 +202,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.92982F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 74.38202F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.820225F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(362, 394);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(378, 443);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel5
@@ -223,14 +224,14 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(356, 80);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(372, 91);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // btnNhapKho
             // 
             this.btnNhapKho.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnNhapKho.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhapKho.Location = new System.Drawing.Point(108, 3);
+            this.btnNhapKho.Location = new System.Drawing.Point(113, 5);
             this.btnNhapKho.Name = "btnNhapKho";
             this.btnNhapKho.Size = new System.Drawing.Size(112, 34);
             this.btnNhapKho.TabIndex = 0;
@@ -240,7 +241,8 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(226, 43);
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button2.Location = new System.Drawing.Point(237, 51);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(118, 34);
             this.button2.TabIndex = 3;
@@ -250,7 +252,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(108, 43);
+            this.button1.Location = new System.Drawing.Point(113, 48);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 34);
             this.button1.TabIndex = 2;
@@ -279,8 +281,8 @@
             this.tableLayoutPanel4.Controls.Add(this.txtGiaNhap, 1, 5);
             this.tableLayoutPanel4.Controls.Add(this.label3, 0, 6);
             this.tableLayoutPanel4.Controls.Add(this.dateNgayNhap, 1, 6);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 89);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 100);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 7;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -290,7 +292,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(356, 286);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(372, 323);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // lblIDNguyenLieu
@@ -298,9 +300,9 @@
             this.lblIDNguyenLieu.AutoSize = true;
             this.lblIDNguyenLieu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblIDNguyenLieu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDNguyenLieu.Location = new System.Drawing.Point(3, 40);
+            this.lblIDNguyenLieu.Location = new System.Drawing.Point(3, 46);
             this.lblIDNguyenLieu.Name = "lblIDNguyenLieu";
-            this.lblIDNguyenLieu.Size = new System.Drawing.Size(135, 40);
+            this.lblIDNguyenLieu.Size = new System.Drawing.Size(141, 46);
             this.lblIDNguyenLieu.TabIndex = 1;
             this.lblIDNguyenLieu.Text = "ID nguyên liệu";
             this.lblIDNguyenLieu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -310,9 +312,9 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 80);
+            this.label4.Location = new System.Drawing.Point(3, 92);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 40);
+            this.label4.Size = new System.Drawing.Size(141, 46);
             this.label4.TabIndex = 2;
             this.label4.Text = "Tên nguyên liệu";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -321,25 +323,25 @@
             // 
             this.txtTenNguyenLieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTenNguyenLieu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenNguyenLieu.Location = new System.Drawing.Point(144, 83);
+            this.txtTenNguyenLieu.Location = new System.Drawing.Point(150, 98);
             this.txtTenNguyenLieu.Name = "txtTenNguyenLieu";
-            this.txtTenNguyenLieu.Size = new System.Drawing.Size(200, 34);
+            this.txtTenNguyenLieu.Size = new System.Drawing.Size(210, 34);
             this.txtTenNguyenLieu.TabIndex = 6;
             // 
             // txtIDNhapKho
             // 
             this.txtIDNhapKho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIDNhapKho.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIDNhapKho.Location = new System.Drawing.Point(144, 3);
+            this.txtIDNhapKho.Location = new System.Drawing.Point(150, 6);
             this.txtIDNhapKho.Name = "txtIDNhapKho";
-            this.txtIDNhapKho.Size = new System.Drawing.Size(200, 34);
+            this.txtIDNhapKho.Size = new System.Drawing.Size(210, 34);
             this.txtIDNhapKho.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 166);
+            this.label6.Location = new System.Drawing.Point(3, 193);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(108, 28);
             this.label6.TabIndex = 8;
@@ -350,7 +352,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 206);
+            this.label7.Location = new System.Drawing.Point(3, 239);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(90, 28);
             this.label7.TabIndex = 11;
@@ -364,23 +366,24 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 40);
+            this.label2.Size = new System.Drawing.Size(141, 46);
             this.label2.TabIndex = 0;
             this.label2.Text = "ID:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtIDNguyenlieu
             // 
-            this.txtIDNguyenlieu.Location = new System.Drawing.Point(144, 43);
+            this.txtIDNguyenlieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIDNguyenlieu.Location = new System.Drawing.Point(150, 52);
             this.txtIDNguyenlieu.Name = "txtIDNguyenlieu";
-            this.txtIDNguyenlieu.Size = new System.Drawing.Size(200, 34);
+            this.txtIDNguyenlieu.Size = new System.Drawing.Size(210, 34);
             this.txtIDNguyenlieu.TabIndex = 13;
             this.txtIDNguyenlieu.TextChanged += new System.EventHandler(this.txtIDNguyenlieu_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 120);
+            this.label1.Location = new System.Drawing.Point(3, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 28);
             this.label1.TabIndex = 14;
@@ -388,30 +391,33 @@
             // 
             // txtSoLuong
             // 
-            this.txtSoLuong.Location = new System.Drawing.Point(144, 123);
+            this.txtSoLuong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSoLuong.Location = new System.Drawing.Point(150, 144);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(200, 34);
+            this.txtSoLuong.Size = new System.Drawing.Size(210, 34);
             this.txtSoLuong.TabIndex = 15;
             // 
             // cbDonViTinh
             // 
+            this.cbDonViTinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDonViTinh.FormattingEnabled = true;
-            this.cbDonViTinh.Location = new System.Drawing.Point(144, 163);
+            this.cbDonViTinh.Location = new System.Drawing.Point(150, 189);
             this.cbDonViTinh.Name = "cbDonViTinh";
-            this.cbDonViTinh.Size = new System.Drawing.Size(200, 36);
+            this.cbDonViTinh.Size = new System.Drawing.Size(210, 36);
             this.cbDonViTinh.TabIndex = 16;
             // 
             // txtGiaNhap
             // 
-            this.txtGiaNhap.Location = new System.Drawing.Point(144, 203);
+            this.txtGiaNhap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGiaNhap.Location = new System.Drawing.Point(150, 236);
             this.txtGiaNhap.Name = "txtGiaNhap";
-            this.txtGiaNhap.Size = new System.Drawing.Size(200, 34);
+            this.txtGiaNhap.Size = new System.Drawing.Size(210, 34);
             this.txtGiaNhap.TabIndex = 17;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 240);
+            this.label3.Location = new System.Drawing.Point(3, 276);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 28);
             this.label3.TabIndex = 18;
@@ -419,11 +425,12 @@
             // 
             // dateNgayNhap
             // 
+            this.dateNgayNhap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dateNgayNhap.CustomFormat = "MM/dd/yyyy";
             this.dateNgayNhap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateNgayNhap.Location = new System.Drawing.Point(144, 243);
+            this.dateNgayNhap.Location = new System.Drawing.Point(150, 282);
             this.dateNgayNhap.Name = "dateNgayNhap";
-            this.dateNgayNhap.Size = new System.Drawing.Size(200, 34);
+            this.dateNgayNhap.Size = new System.Drawing.Size(210, 34);
             this.dateNgayNhap.TabIndex = 19;
             // 
             // errorProvider1
@@ -434,7 +441,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(832, 499);
             this.Controls.Add(this.groupBox1);
             this.Name = "NhapKho";
             this.Text = "Nhập kho";

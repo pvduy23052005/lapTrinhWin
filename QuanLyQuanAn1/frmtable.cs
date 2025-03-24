@@ -24,10 +24,13 @@ namespace QuanLyQuanAn1
         {
             InitializeComponent();
         }
+
         ketnoi ketNoi = new ketnoi();
         insertBill insertBill = new insertBill();
         insertFood insertFood = new insertFood();
         insertBillInfo insertBillInfo = new insertBillInfo();
+
+
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -40,10 +43,10 @@ namespace QuanLyQuanAn1
 
         private void thôngTinToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmaccount frmaccount = new frmaccount();
-            Hide();
-            frmaccount.ShowDialog();
-            Show();
+            //frmaccount frmaccount = new frmaccount();
+            //Hide();
+            //frmaccount.ShowDialog();
+            //Show();
            
         }
 
@@ -72,7 +75,7 @@ namespace QuanLyQuanAn1
 
 
                 // tạo 1 ky tự cho button . 
-                btn.Text = item.ID +  item.Name + Environment.NewLine ;
+                btn.Text =  item.Name + Environment.NewLine ;
 
                    btn.BackColor = Color.LightGreen;
                 
@@ -198,7 +201,7 @@ namespace QuanLyQuanAn1
             
             string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+table.ID+ "' and Bill.gio IS NULL ; \r\n";
 
-          DataTable dt =  ketNoi.dsquanan(query);
+            DataTable dt =  ketNoi.dsquanan(query);
             dataGridView1.DataSource = dt;
           
             if (xuathoadon.ktratt == true)
@@ -248,6 +251,8 @@ namespace QuanLyQuanAn1
             return Convert.ToInt32(result);
         }
 
+
+
         // btn them mon cho ban an . 
         private void btnthem_Click(object sender, EventArgs e)
         {
@@ -266,11 +271,6 @@ namespace QuanLyQuanAn1
 
             try
             {
-                /*      // lay ra id cua bill vua moi khi them moi mon .
-                      int idBill = insertBill.getIdBill();
-                      // lay ve ifFood tu ma minh chon . 
-                      int idFood = insertFood.getIdFood(cmbmon.SelectedItem.ToString());
-                */
                 // Lấy ID hóa đơn hiện tại của bàn (tạo mới nếu chưa có)
                 int idBill = insertBill.GetCurrentBillId(table.ID);
               //  MessageBox.Show(idBill.ToString());
@@ -292,6 +292,8 @@ namespace QuanLyQuanAn1
 
                     CapNhatKho();
                     // goi ham ínertBil
+
+                   
                     insertBillInfo.InsertBillInfo(idBill, idFood, so_luong_mon);
                     
 
@@ -466,6 +468,14 @@ namespace QuanLyQuanAn1
 
         // Tinh nang xoa . 
         string layid;
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            layid = dataGridView1.CurrentRow.Cells[0].Value.ToString();// id của billinfo
+
+        }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             table table = dataGridView1.Tag as table;
@@ -481,12 +491,17 @@ namespace QuanLyQuanAn1
             
             NhapKhoDAO.Instance.UpdateKhoNguyenLieu(idFood, soluong);
             ketNoi.dsupdate("delete from BillInfo where BillInfo.id = '" + Convert.ToInt32(layid) + "'");
+
+
             // load lai du lieu bang . 
             string query = "SELECT BillInfo.id ,\r\n Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' and Bill.gio IS NULL ; \r\n";
             DataTable loadData = ketNoi.dsquanan(query);
             dataGridView1.DataSource = loadData;
             dataGridView1.Columns[0].Visible = false;
         }
+
+
+        // load 
         int GetIdFoodBIllInfo(int idbillinfo)
         {
             string query = "select idfood from billinfo where id = @id ";
@@ -526,9 +541,9 @@ namespace QuanLyQuanAn1
 
             return Convert.ToInt32(count);
         }
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
         {
-            layid = dataGridView1.CurrentRow.Cells[0].Value.ToString();
 
         }
     }

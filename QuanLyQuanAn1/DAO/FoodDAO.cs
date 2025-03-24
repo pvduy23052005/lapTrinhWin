@@ -29,6 +29,9 @@ namespace QuanLyQuanAn1.DAO
         {
             try
             {
+                string query1 = @"select count(*) from FoodIngredient where idfood = @idfood ";
+                int check1 = (int)DataProvider.Singleton.ExeCuteS(query1, new object[] { idFood });
+                if (check1 == 0) return true;
                 string query = @"SELECT MIN(KhoNguyenLieu.soLuong - (FoodIngredient.soLuongCan * @soLuongDat )) FROM KhoNguyenLieu  JOIN FoodIngredient ON KhoNguyenLieu.id = FoodIngredient.idNguyenLieu  WHERE FoodIngredient.idFood = @idFood ";
 
                 object result = DataProvider.Singleton.ExeCuteS(query, new object[] { soLuongDat, idFood });
@@ -53,6 +56,7 @@ namespace QuanLyQuanAn1.DAO
             
                 try
                 {
+
 
                 string query = @"UPDATE KhoNguyenLieu SET soLuong = soLuong - CAST(FoodIngredient.soLuongCan AS FLOAT) * @soLuongDat FROM KhoNguyenLieu JOIN FoodIngredient ON KhoNguyenLieu.id = FoodIngredient.idNguyenLieu
                     WHERE FoodIngredient.idFood = @idFood ";

@@ -49,6 +49,15 @@ namespace QuanLyQuanAn1.DAO
         }
         public void UpdateKhoNguyenLieu(string ten, float soluong)
         {
+            string checkQuery = "SELECT COUNT(*) FROM KhoNguyenLieu WHERE tenNguyenLieu = @TenNguyenLieu ";
+            object result = DataProvider.Singleton.ExeCuteS(checkQuery, new object[] { ten });
+
+           
+            if (result == null || Convert.ToInt32(result) == 0)
+            {
+                
+                return;
+            }
             string query = "UPDATE KhoNguyenLieu SET soLuong = soLuong - @soLuong WHERE tenNguyenLieu = @TenNguyenLieu ";
             DataProvider.Singleton.ExeCuteNon(query, new object[] { soluong, ten });
 
