@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyQuanAn1.DAO;
 
 namespace QuanLyQuanAn1
 {
@@ -112,9 +113,20 @@ namespace QuanLyQuanAn1
             dataviewthucdon.Columns[2].Visible = false;
             dataviewthucdon.Columns[4].Visible = false;
         }
-
+        void XoaFoodIter(int idFood)
+        {
+            string query = "delete from FoodIngredient where idfood = @idfood ";
+            int xoa = DataProvider.Singleton.ExeCuteNon(query , new object[] { idFood });
+        }
+        void XoaBillInfo(int idFood)
+        {
+            string query = "delete from billinfo where idfood = @idfood ";
+            int xoa = DataProvider.Singleton.ExeCuteNon(query, new object[] { idFood });
+        }
         private void button3_Click(object sender, EventArgs e)
         {
+            XoaBillInfo(Convert.ToInt32((tbid.Text)));
+            XoaFoodIter(Convert.ToInt32(tbid.Text));
             db.dsupdate("delete from food where food.id = '" + tbid.Text + "'");
             DataTable dt = db.dsquanan("select * from Food,FoodCategory where Food.idCategory = FoodCategory.id;");
             dataviewthucdon.DataSource = dt;
@@ -185,6 +197,11 @@ namespace QuanLyQuanAn1
         {
 
 
+
+        }
+
+        private void tbten_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

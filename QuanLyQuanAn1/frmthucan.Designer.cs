@@ -270,12 +270,13 @@
             this.tbten.Name = "tbten";
             this.tbten.Size = new System.Drawing.Size(212, 34);
             this.tbten.TabIndex = 5;
+            this.tbten.TextChanged += new System.EventHandler(this.tbten_TextChanged);
             // 
             // cbdanhmuc
             // 
             this.cbdanhmuc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbdanhmuc.FormattingEnabled = true;
-            this.cbdanhmuc.Location = new System.Drawing.Point(129, 303);
+            this.cbdanhmuc.Location = new System.Drawing.Point(129, 296);
             this.cbdanhmuc.Name = "cbdanhmuc";
             this.cbdanhmuc.Size = new System.Drawing.Size(212, 37);
             this.cbdanhmuc.TabIndex = 7;
@@ -330,7 +331,7 @@
             this.cbtimfood.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbtimfood.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbtimfood.FormattingEnabled = true;
-            this.cbtimfood.Location = new System.Drawing.Point(276, 25);
+            this.cbtimfood.Location = new System.Drawing.Point(276, 26);
             this.cbtimfood.Name = "cbtimfood";
             this.cbtimfood.Size = new System.Drawing.Size(406, 39);
             this.cbtimfood.TabIndex = 1;
@@ -346,7 +347,7 @@
             this.lbtim.Name = "lbtim";
             this.lbtim.Size = new System.Drawing.Size(267, 60);
             this.lbtim.TabIndex = 0;
-            this.lbtim.Text = "tất cả thực đơn";
+            this.lbtim.Text = "Tất cả thực đơn";
             this.lbtim.UseVisualStyleBackColor = false;
             this.lbtim.Click += new System.EventHandler(this.lbtim_Click);
             this.lbtim.MouseEnter += new System.EventHandler(this.doimau);

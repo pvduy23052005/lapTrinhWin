@@ -46,7 +46,9 @@ namespace QuanLyQuanAn1
             Show();
            
         }
-
+        public Color luumauxanh;
+        public Color luumaunhan;
+        
 
         // cap nhat danh sach ban . 
         public void LoadTable()
@@ -65,25 +67,28 @@ namespace QuanLyQuanAn1
                     Height = 95
                 };
 
-                // thêm event Click . 
+ 
                 btn.Click += btn_Click;
+                
                 //cho them1 the tag .
                 btn.Tag = item;
-
+               
 
                 // tạo 1 ky tự cho button . 
-                btn.Text = item.ID +  item.Name + Environment.NewLine ;
+                btn.Text =  item.Name + "\n("+item.Status +")";
+              
 
-                   btn.BackColor = Color.LightGreen;
-                
+                  btn.BackColor = Color.LightGreen;
+                luumauxanh = btn.BackColor;
 
                 // them vao du lieu ra 
-                 flowLayoutPanel1.Controls.Add(btn);
+                flowLayoutPanel1.Controls.Add(btn);
+
                 
             }
 
         }
-
+        public Button luu = null;
         // bat su kien hien thi hien thi danh sach mon an . 
         private void btn_Click(object sender, EventArgs e)
         {
@@ -94,19 +99,26 @@ namespace QuanLyQuanAn1
                 {
                     if (control is Button btn)
                     {
-                        btn.BackColor = Color.LightGreen; // mau 
+                        btn.BackColor = luumauxanh;
+                       
                     }
                 }
-
+                
                 // Lấy button được nhấp và đổi màu sang hồng
                 Button clickedButton = (Button)sender;
                 if (clickedButton != null)
                 {
-                    clickedButton.BackColor = Color.Pink;
+                    
+
+                        clickedButton.BackColor = Color.Pink;
+                   
+                   
+                    luumaunhan = clickedButton.BackColor;
+                    
                 }
 
 
-
+               
                 int tableId = ((sender as Button).Tag as table).ID;
                 //  MessageBox.Show(tableId.ToString());
                 dataGridView1.Tag = (sender as Button).Tag;
@@ -192,18 +204,42 @@ namespace QuanLyQuanAn1
 
             // Mở form xuất hóa đơn
             xuathoadon f = new xuathoadon();
-     
-            f.cblayban.Text =  "Bàn " + table.ID.ToString(); // Gán đúng ID bàn = so bàn 
-            f.ShowDialog();
+            DataTable travename = ketNoi.dsquanan("select name from Tablefood where id = '" + table.ID + "'");
+            string layname = travename.Rows[0]["name"].ToString();
+            f.cblayban.Text = layname;
             
-            string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+table.ID+ "' and Bill.gio IS NULL ; \r\n";
+            f.ShowDialog();
+             table.Status = xuathoadon.laystatic;
+       
+            if (table.Status == "Trống")
+            {
+                foreach (Control control in flowLayoutPanel1.Controls)
+                {
+                    if (control is Button btn)
+                    {
+                        if (btn.BackColor == luumaunhan)
+                        {
+                          
+                            btn.Text = table.Name + "\n(" +table.Status+  ")";
+                            break;
+                        }
+
+                    }
+                }
+              
+
+                string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '"+table.ID+ "' and Bill.gio IS NULL ; \r\n";
 
           DataTable dt =  ketNoi.dsquanan(query);
             dataGridView1.DataSource = dt;
+
           
+            }
+
             if (xuathoadon.ktratt == true)
             {
                 insertBill.InsertBill(table.ID);
+            
                 xuathoadon.ktratt = false;
             }
             
@@ -220,23 +256,37 @@ namespace QuanLyQuanAn1
         {
 
         }
-        void CapNhatKho( )
+        void CapNhatKho()
         {
             string Mon = cmbmon.Text;
             int idFood = FoodDAO.Instance.GetIDFood(Mon);
             int soLuong = (int)soLuongMon.Value;
-            int khoiluongthucan = GetSoLuongCanChoMon(idFood) * soLuong;
-            Console.WriteLine(khoiluongthucan);
-            
-            if (!FoodDAO.Instance.KiemTraKho(idFood, khoiluongthucan))
-            {
-                MessageBox.Show("Không đủ nguyên liệu trong kho!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
-            bool result = FoodDAO.Instance.CapNhatKho(idFood, soLuong);
-            XuatKhoDAO.Instance.InsertXuatKho(idFood, khoiluongthucan, DateTime.Now.ToString(), "Dùng để  cho " + Mon + " Ngày " + DateTime.Now.ToString() + " ");
+           
+            DataTable nguyenLieuList = GetListNguyenLieuByFood(idFood);
+
+            foreach (DataRow row in nguyenLieuList.Rows)
+            {
+                int idNguyenLieu = Convert.ToInt32(row[0]);
+                float soLuongCan = Convert.ToSingle(row[1]);
+
+                
+                float khoiluongthucan = soLuongCan * soLuong;
+
+                
+                if (!FoodDAO.Instance.KiemTraKho(idFood, soLuong))
+                {
+                    MessageBox.Show("Không đủ nguyên liệu trong kho", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                bool result = FoodDAO.Instance.CapNhatKho(idNguyenLieu, khoiluongthucan);
+
+                
+                XuatKhoDAO.Instance.InsertXuatKho(idNguyenLieu, khoiluongthucan, DateTime.Now.ToString(), "Dùng để cho " + Mon + " Ngày " + DateTime.Now.ToString());
+            }
         }
+
         public int GetSoLuongCanChoMon(int IdFood)
         {
             string query = "select soluongcan from FoodIngredient where idNguyenLieu = @idnguyenlieu ";
@@ -290,10 +340,20 @@ namespace QuanLyQuanAn1
                         return;
                     }
 
+
                     CapNhatKho();
                     // goi ham ínertBil
+
+                    //if (insertBillInfo.CheckMonBillInfo( idBill  , idFood) == false)
+                    //{
+                    //    insertBillInfo.UpdateCountBillInfo();
+                    //}else
+                    //{
+                    //    insertBillInfo.InsertBillInfo(idBill, idFood, so_luong_mon);
+                    //}
+
                     insertBillInfo.InsertBillInfo(idBill, idFood, so_luong_mon);
-                    
+
 
 
                     //frmkho frm = (frmkho)this.Owner;
@@ -359,10 +419,10 @@ namespace QuanLyQuanAn1
         
         private void frmtable_Load(object sender, EventArgs e)
         {
-            
+            ketNoi.dsupdate("update tableFood set status = N'đầy' where id = 1 ");
             LoadTable();
-        
-         
+
+            
             cmbmon.Items.Clear();
 
             string query = "select * from FoodCategory";
@@ -374,6 +434,7 @@ namespace QuanLyQuanAn1
             {
                 cmbloai.Items.Add(row["name"]);
             }
+         
         }
 
         private void lblloai_Click(object sender, EventArgs e)
@@ -476,16 +537,32 @@ namespace QuanLyQuanAn1
                 return;
             }
             int idFood = GetIDNguyenLieu(Convert.ToInt32(layid));
-            float soluong = (float)Math.Round(GetCountFoodBIllInfo(Convert.ToInt32(layid)) * GetSoLuongCan(Convert.ToInt32(layid)), 2);
+            DataTable nguyenLieuList = GetListNguyenLieuByFood(idFood);
 
-            
-            NhapKhoDAO.Instance.UpdateKhoNguyenLieu(idFood, soluong);
+            foreach (DataRow row in nguyenLieuList.Rows)
+            {
+                int idNguyenLieu = Convert.ToInt32(row[0]);
+                float soLuongCan = Convert.ToSingle(row[1]);
+
+                // Tính tổng số lượng nguyên liệu cần cập nhật
+                float soluong = GetCountFoodBIllInfo(Convert.ToInt32(layid)) * soLuongCan;
+                Console.WriteLine(soluong);
+
+                // Cập nhật lại kho nguyên liệu
+                NhapKhoDAO.Instance.UpdateKhoNguyenLieu(idNguyenLieu, soluong);
+            }
             ketNoi.dsupdate("delete from BillInfo where BillInfo.id = '" + Convert.ToInt32(layid) + "'");
             // load lai du lieu bang . 
             string query = "SELECT BillInfo.id ,\r\n Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' and Bill.gio IS NULL ; \r\n";
             DataTable loadData = ketNoi.dsquanan(query);
             dataGridView1.DataSource = loadData;
             dataGridView1.Columns[0].Visible = false;
+        }
+        DataTable GetListNguyenLieuByFood(int idFood)
+        {
+            string query = "SELECT idNguyenLieu, soLuongCan FROM FoodIngredient WHERE idFood = @idfood ";
+            DataTable dt = DataProvider.Singleton.ExeCuteQuery(query, new object[] { idFood });
+            return dt;
         }
         int GetIdFoodBIllInfo(int idbillinfo)
         {
@@ -526,6 +603,7 @@ namespace QuanLyQuanAn1
 
             return Convert.ToInt32(count);
         }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             layid = dataGridView1.CurrentRow.Cells[0].Value.ToString();

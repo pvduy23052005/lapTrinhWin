@@ -191,5 +191,8 @@
   <ItemGroup>
     <None Include="Resources\pngtree-street-cafe-with-coffee-and-snacks-at-night-image_1434125.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tải xuống %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

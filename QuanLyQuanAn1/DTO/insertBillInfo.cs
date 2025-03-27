@@ -28,7 +28,7 @@ namespace QuanLyQuanAn1.DTO
         }
 
 
-        public bool CheckMonBillInfo(int idBill, int idFood)
+        public bool CheckMonBillInfo( int idBill, int idFood)
         {
             string query = "select * from BillInfo where idBill = '" + idBill + "' and idFood = '" + idFood + "'";
 

@@ -20,6 +20,7 @@ namespace QuanLyQuanAn1
         {
             InitializeComponent();
         }
+        public static string laystatic;
         ketnoi db = new ketnoi();
         string k;
         string laytt;
@@ -31,6 +32,7 @@ namespace QuanLyQuanAn1
             {
                 
                 DataTable dt = db.dsquanan("Select Bill.id,Bill.status from Bill,Tablefood  where Bill.idTable = Tablefood.id and Tablefood.name =  N'" + cblayban.Text + "'" + chuoi);
+             
                 k = dt.Rows[0]["id"].ToString();
                 laytt = dt.Rows[0]["status"].ToString();
             }
@@ -95,17 +97,20 @@ namespace QuanLyQuanAn1
       
         
            DataTable dt = db.dsquanan("Select Bill.id from Bill,Tablefood  where Bill.idTable = Tablefood.id and Tablefood.name =  N'"+cblayban.Text+"'and Bill.gio IS NULL");
-            string k = dt.Rows[0]["id"].ToString();   int h = Convert.ToInt32(k);
+            int h  = Convert.ToInt32(dt.Rows[0]["id"]);
             MessageBox.Show(h.ToString());
 
             string timeValue = dateTimePicker1.Value.ToString("HH:mm:ss");
             db.dsupdate("UPDATE Bill SET Bill.gio = CONVERT(TIME, '" + timeValue + "') ,Bill.status = '1' WHERE Bill.id = '" + h+"'");
             ktratt = true;
-          
+            db.dsupdate("update Tablefood set status = N'Trống' where name = N'" + cblayban.Text + "'");
+
+            DataTable laystt = db.dsquanan("select status from Tablefood where name = N'" + cblayban.Text + "'");
+            laystatic = laystt.Rows[0]["status"].ToString();
             DataTable x = db.dsquanan("select Tablefood.id from Bill,Tablefood  where Bill.idTable = Tablefood.id and Tablefood.name  = N'" + cblayban.Text + "' and  Bill.id = '" +h+" '");
-            MessageBox.Show(cblayban.Text);
-            string g = x.Rows[0]["id"].ToString();
-            int l = Convert.ToInt32(g);
+          
+           
+            int l = Convert.ToInt32(x.Rows[0]["id"]);
             
 
             DataTable ds = db.dsquanan("SELECT Food.name AS [món ăn],BillInfo.count AS [số lượng],Food.price AS [giá],    (BillInfo.count * Food.price) AS [tổng tiền] FROM    Tablefood, Bill, BillInfo, Food WHERE   Tablefood.id = Bill.idTable    AND BillInfo.idBill = Bill.id   AND BillInfo.idFood = Food.id    AND Tablefood.id = '" + l + "' and  Bill.id = '"+h+"'");

@@ -23,7 +23,7 @@ namespace QuanLyQuanAn1.DAO
         }
 
 
-       
+
 
         public bool KiemTraKho(int idFood, int soLuongDat)
         {
@@ -33,8 +33,8 @@ namespace QuanLyQuanAn1.DAO
 
                 object result = DataProvider.Singleton.ExeCuteS(query, new object[] { soLuongDat, idFood });
 
-                // Kiểm tra nếu kết quả null hoặc nhỏ hơn 0
-                if (result == null || Convert.ToInt32(result) < 0)
+
+                if (Convert.ToInt32(result) < 0)
                 {
                     return false; // Không đủ nguyên liệu
                 }
@@ -47,28 +47,22 @@ namespace QuanLyQuanAn1.DAO
             }
         }
 
-
-        public bool CapNhatKho(int idFood, int soLuongDat)
+        public bool CapNhatKho(int idNguyenLieu, float soLuongCan)
         {
-            
-                try
-                {
+            try
+            {
+                string query = @"UPDATE KhoNguyenLieu SET soLuong = soLuong - @soLuongCan WHERE id = @idNguyenLieu ";
 
-                string query = @"UPDATE KhoNguyenLieu SET soLuong = soLuong - CAST(FoodIngredient.soLuongCan AS FLOAT) * @soLuongDat FROM KhoNguyenLieu JOIN FoodIngredient ON KhoNguyenLieu.id = FoodIngredient.idNguyenLieu
-                    WHERE FoodIngredient.idFood = @idFood ";
-
-
-                DataProvider.Singleton.ExeCuteNon(query , new object[] {soLuongDat, idFood});
-                  return true;
-                    
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi cập nhật kho: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
+                DataProvider.Singleton.ExeCuteNon(query, new object[] { soLuongCan, idNguyenLieu });
+                return true;
             }
-        
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi cập nhật kho: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
 
 
         public int GetIDFood(string TenMon)

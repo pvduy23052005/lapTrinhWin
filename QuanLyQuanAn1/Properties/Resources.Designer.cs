@@ -73,6 +73,16 @@ namespace QuanLyQuanAn1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap tải_xuống__1_ {
+            get {
+                object obj = ResourceManager.GetObject("tải xuống (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap z3952283226335_06308d02b1424dd823cd543e0678b7d7 {
             get {
                 object obj = ResourceManager.GetObject("z3952283226335_06308d02b1424dd823cd543e0678b7d7", resourceCulture);
