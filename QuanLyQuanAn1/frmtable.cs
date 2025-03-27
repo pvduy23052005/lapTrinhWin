@@ -81,21 +81,19 @@ namespace QuanLyQuanAn1
                 tableStatus tableStatus = new tableStatus();
                 if ( data.Rows.Count > 0)
                 {
-                    btn.Text = item.Name + "\n (Có người)";
+                    btn.Text = item.Name + "\n (Có người)" ;
                     btn.BackColor = Color.LightPink;
-                    tableStatus.ChangeStatus(item.ID, "coNguoi");
+                    tableStatus.ChangeStatus(item.ID, "Có người");
                 }
                 else
                 {
-                    btn.Text = item.Name + "\n(Trống)";
+                    btn.Text = item.Name + "\n(Trống)" ;
                     btn.BackColor = Color.LightGreen;
-                    tableStatus.ChangeStatus(item.ID, "Trong");
+                    tableStatus.ChangeStatus(item.ID, "Trống");
                 }
 
 
                 //btn.BackColor = Color.LightGreen;
-
-                luumauxanh = btn.BackColor;
 
                 // them vao du lieu ra 
                 flowLayoutPanel1.Controls.Add(btn);
@@ -140,11 +138,6 @@ namespace QuanLyQuanAn1
 
 
                 }
-
-
-               
-
-
                 //  MessageBox.Show(tableId.ToString());
                 dataGridView1.Tag = (sender as Button).Tag;
                 string query = "SELECT Billinfo.id , Tablefood.id , Bill.id, \r\n Food.name , \r\n    Food.price , \r\n   BillInfo.count ,Food.price * BillInfo.count as [Tổng tiền]  FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + tableId + "'and Bill.gio IS NULL ; \r\n";
@@ -195,8 +188,6 @@ namespace QuanLyQuanAn1
                 MessageBox.Show("Bạn không có quyền truy cập!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        void loadTable() { }
         private void doanhMụcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -219,15 +210,18 @@ namespace QuanLyQuanAn1
 
 
             table table = dataGridView1.Tag as table;
+            string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' and Bill.gio IS NULL ; \r\n";
 
 
-            if (table.Status != "Trống")
+            if (table == null)
             {
-                if (table == null)
-                {
-                    MessageBox.Show("Vui lòng chọn bàn để thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                MessageBox.Show("Vui lòng chọn bàn để thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // đổi CSDl sang không có đấu ok hưng ngu .
+            if (ketNoi.dsquanan(query).Rows.Count > 0)
+            {
 
                 int idBill = insertBill.GetCurrentBillId(table.ID);
 
@@ -241,7 +235,6 @@ namespace QuanLyQuanAn1
                 table.Status = xuathoadon.laystatic;
 
 
-                string query = "SELECT \r\n Food.name , \r\n    Food.price , \r\n    BillInfo.count FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' and Bill.gio IS NULL ; \r\n";
                 DataTable dt = ketNoi.dsquanan(query);
                 dataGridView1.DataSource = dt;
                 if (xuathoadon.ktratt == true)
@@ -345,7 +338,7 @@ namespace QuanLyQuanAn1
                 {
 
 
-                    //if (!FoodDAO.Instance.KiemTraKho(idFood , so_luong_mon))
+                    //if (!FoodDAO.Instance.KiemTraKho(idFood, so_luong_mon))
                     //{
                     //    MessageBox.Show("Không đủ nguyên liệu trong kho!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     //    cmbloai.Text = "";
@@ -436,9 +429,8 @@ namespace QuanLyQuanAn1
         
         private void frmtable_Load(object sender, EventArgs e)
         {
-            ketNoi.dsupdate("update tableFood set status = N'đầy' where id = 1 ");
+            //ketNoi.dsupdate("update tableFood set status = N'đầy' where id = 1 ");
             LoadTable();
-
             
             cmbmon.Items.Clear();
 

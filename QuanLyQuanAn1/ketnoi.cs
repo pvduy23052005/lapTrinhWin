@@ -74,7 +74,7 @@ namespace QuanLyQuanAn1
             SqlConnection con = new SqlConnection(hung);
             con.Open();
             SqlCommand cmd = new SqlCommand(update, con);
-
+            con.Close();
         }
 
 

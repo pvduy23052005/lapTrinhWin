@@ -16,7 +16,7 @@ namespace QuanLyQuanAn1.DTO
 
             ketnoi ketNoi = new ketnoi();
 
-            string update = "UPDATE Tablefood SET status = '" + status + "' where Tablefood.id = '" + idTable + "'";
+            string update = "UPDATE Tablefood SET status = N'" + status + "' where Tablefood.id = " + idTable + " ";
             ketNoi.updateTaleStatus(update);
 
         }
