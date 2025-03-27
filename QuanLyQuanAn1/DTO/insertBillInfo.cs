@@ -18,7 +18,7 @@ namespace QuanLyQuanAn1.DTO
         {
             try
             {
-                string query = "INSERT INTO BillInfo (idBill, idFood, count) VALUES (" + idBill + ", " + idFood + ", " + count + ")";
+                string query = "INSERT INTO BillInfo (idBill, idFood, count) VALUES ("+ idBill +" , "+idFood +" , "+count+")";
                 ketNoi.dsupdate(query);
             }
             catch (Exception ex)

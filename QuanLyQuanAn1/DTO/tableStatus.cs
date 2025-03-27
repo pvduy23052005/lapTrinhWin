@@ -1,42 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms; 
+using System.Windows.Forms;
 
 namespace QuanLyQuanAn1.DTO
 {
     public class tableStatus
     {
-       
-        public void changeStatusAvailabe(int idTable)
+        public void ChangeStatus(int idTable, string status)
         {
-            try
-            {
-                ketnoi ketNoi = new ketnoi();
-                string query = "UPDATE TableFood SET status = N'đã đặt' WHERE id = " + idTable;
-                ketNoi.dsupdate(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
-        public void changeStatusUnAvailabe(int idTable)
-        {
-            try
-            {
-                ketnoi ketNoi = new ketnoi();
-                string query = "UPDATE TableFood SET status = N'Trống' WHERE id = " + idTable;
-                ketNoi.dsupdate(query);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
+            ketnoi ketNoi = new ketnoi();
+
+            string update = "UPDATE Tablefood SET status = '" + status + "' where Tablefood.id = '" + idTable + "'";
+            ketNoi.updateTaleStatus(update);
+
         }
 
     }
 }
+
+

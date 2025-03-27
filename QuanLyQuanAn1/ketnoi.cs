@@ -13,17 +13,19 @@ namespace QuanLyQuanAn1
     {
         public SqlConnection Connection { get; internal set; }
 
+        // string hung = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True";
+
+        string hung = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=LeQuyDuonggg;Integrated Security=True";
+
+        // string hung = "Data Source=LAPTOP-JOKOO9J7\\SQLEXPRESS;Initial Catalog=LeQuyDuong1;Integrated Security=True;";
+
+        //     string hung = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuonggg;Integrated Security=True;";
+
         public DataTable dsquanan(string sql)
         {
             try
             {
 
-                //string hung = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=LeQuyDuong;Integrated Security=True";
-                    string hung = "Data Source=LAPTOP-JOKOO9J7\\SQLEXPRESS;Initial Catalog=LeQuyDuong1;Integrated Security=True;";
-        //string hung = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuonggg;Integrated Security=True;";
-                // string t = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=Duong;Integrated Security=True";
-
-                // string t = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=QuanLyQuanAn;Integrated Security=True";
                 SqlConnection con = new SqlConnection(hung);
                 con.Open();
                 DataTable dt = new DataTable();
@@ -44,12 +46,7 @@ namespace QuanLyQuanAn1
         {
             try
             {
-                // string hung = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=quanLyQuanAn;Integrated Security=True";
 
-                // string hung = "Data Source=LAPTOP-94IP7ASU\\PHUNGVANDUY;Initial Catalog=LeQuyDuong;Integrated Security=True";
-
-   string hung = "Data Source=LAPTOP-JOKOO9J7\\SQLEXPRESS;Initial Catalog=LeQuyDuong1;Integrated Security=True;";
-   //     string hung = "Data Source=DESKTOP-7BJS2JF\\SQLEXPRESS;Initial Catalog=LeQuyDuonggg;Integrated Security=True;";
                 SqlConnection con = new SqlConnection(hung);
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
@@ -71,6 +68,15 @@ namespace QuanLyQuanAn1
                 MessageBox.Show("lỗi" + ex);
             }
         }
+
+        public void updateTaleStatus( string update)
+        {
+            SqlConnection con = new SqlConnection(hung);
+            con.Open();
+            SqlCommand cmd = new SqlCommand(update, con);
+
+        }
+
 
         internal void dsupdate(SqlCommand command)
         {

@@ -18,14 +18,14 @@ namespace QuanLyQuanAn1.DTO
          {
              try
              {
-             
 
-                    // Câu truy vấn SQL với tham số hóa để tránh SQL Injection
-                    string query = "INSERT INTO Bill (DateCheckIn, gio, idTable, status) " +
-                                    "VALUES (GETDATE(), NULL, '" + tableId + "', 0)";
-                    
-                    // tao 1 ban ghi moi . 
-                    ketNoi.dsupdate(query);
+
+                // Câu truy vấn SQL với tham số hóa để tránh SQL Injection
+                string query = "INSERT INTO Bill ( gio, idTable, status) " +
+                                    "VALUES ( NULL, '" + tableId + "', 0)";
+
+                // tao 1 ban ghi moi . 
+                ketNoi.dsupdate(query);
            
              }
              catch (Exception ex)

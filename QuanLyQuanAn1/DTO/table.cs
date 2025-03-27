@@ -50,5 +50,7 @@ namespace QuanLyQuanAn1.DTO
             get { return iD; }
             set { iD = value; }
         } 
+
+
     }
 }
