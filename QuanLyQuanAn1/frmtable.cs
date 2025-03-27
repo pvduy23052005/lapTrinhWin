@@ -75,7 +75,7 @@ namespace QuanLyQuanAn1
                 btn.Tag = item;
 
 
-                string query = "SELECT Billinfo.id , Tablefood.id , Bill.id, \r\n Food.name , \r\n    Food.price , \r\n   BillInfo.count ,Food.price * BillInfo.count as [Tổng tiền]  FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + item.ID + "'and Bill.gio IS NULL ; \r\n";
+                string query = "SELECT BillInfo.id , Tablefood.id , Bill.id, \r\n Food.name , \r\n    Food.price , \r\n   BillInfo.count ,Food.price * BillInfo.count as [Tổng tiền]  FROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + item.ID + "'and Bill.gio IS NULL ; \r\n";
                 DataTable data = ketNoi.dsquanan(query);
 
                 tableStatus tableStatus = new tableStatus();
@@ -351,16 +351,17 @@ namespace QuanLyQuanAn1
 
                     // goi ham ínertBil
 
-                    //if (insertBillInfo.CheckMonBillInfo( idBill  , idFood) == false)
-                    //{
-                    //    insertBillInfo.UpdateCountBillInfo();
-                    //}else
-                    //{
-                    //    insertBillInfo.InsertBillInfo(idBill, idFood, so_luong_mon);
-                    //}
+                    if (insertBillInfo.CheckMonBillInfo(idBill, idFood , table.ID) == false)
+                    {
+                        insertBillInfo.UpdateCountBillInfo( idBill , idFood , table.ID , so_luong_mon);
+                    }
+                    else
+                    {
+                        insertBillInfo.InsertBillInfo(idBill, idFood, so_luong_mon);
+                    }
 
 
-                    insertBillInfo.InsertBillInfo(idBill, idFood, so_luong_mon);
+                    //insertBillInfo.InsertBillInfo(idBill, idFood, so_luong_mon);
 
 
 
@@ -381,7 +382,6 @@ namespace QuanLyQuanAn1
             }
 
 
-            //  MessageBox.Show(table.ID.ToString());
             // load lai du lieu bang . 
             string query = "SELECT \r\n BillInfo.id ,Food.name, \r\n    Food.price, \r\n    BillInfo.count, \r\n    Food.price * BillInfo.count AS [tổng tiền]\r\nFROM \r\n    BillInfo\r\nINNER JOIN \r\n    Bill ON BillInfo.idBill = Bill.id\r\nINNER JOIN \r\n    Food ON BillInfo.idFood = Food.id\r\nINNER JOIN \r\n    Tablefood ON Bill.idTable = Tablefood.id\r\nWHERE BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable = '" + table.ID + "' and Bill.gio IS NULL ; \r\n";
             DataTable loadData = ketNoi.dsquanan(query);
@@ -509,6 +509,7 @@ namespace QuanLyQuanAn1
         {
             quanlihd f = new quanlihd();
             DataTable dt = ketNoi.dsquanan("select * from Tablefood");
+
             f.comboBox1.DataSource = dt;
             f.comboBox1.DisplayMember = "name";
             f.comboBox1.ValueMember = "id";
